@@ -24,11 +24,6 @@ public class LikeActivity extends BaseActivity {
     private android.widget.LinearLayout activityLayout;
     private android.widget.ListView myPostListView;
     private android.widget.LinearLayout myProfileLayout;
-    private android.widget.ImageView tabBtn1;
-    private android.widget.ImageView tabBtn2;
-    private android.widget.ImageView tabBtn3;
-    private android.widget.ImageView tabBtn4;
-    private android.widget.ImageView tabBtn5;
 
     NotificationAdapter myNotiAdapter;
     List<NotificationData> DataList = new ArrayList<>();
@@ -61,11 +56,6 @@ public class LikeActivity extends BaseActivity {
 
     @Override
     public void bindViews() {
-        this.tabBtn5 = (ImageView) findViewById(R.id.tabBtn5);
-        this.tabBtn4 = (ImageView) findViewById(R.id.tabBtn4);
-        this.tabBtn3 = (ImageView) findViewById(R.id.tabBtn3);
-        this.tabBtn2 = (ImageView) findViewById(R.id.tabBtn2);
-        this.tabBtn1 = (ImageView) findViewById(R.id.tabBtn1);
         this.myProfileLayout = (LinearLayout) findViewById(R.id.myProfileLayout);
         this.myPostListView = (ListView) findViewById(R.id.myPostListView);
         this.activityLayout = (LinearLayout) findViewById(R.id.activityLayout);

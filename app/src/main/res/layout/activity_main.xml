@@ -7,15 +7,19 @@
     android:background="#FFFFFF"
     tools:context="com.example.the.instacopy.MainActivity"
     android:orientation="vertical">
-
-    <include layout="@layout/activity_search" />
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/mainViewPager"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
-    </android.support.v4.view.ViewPager>
+
+        <fragment
+            android:id="@+id/searchFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            class="com.example.the.instacopy.fragment.searchFragment"
+            tools:layout="@layout/fragment_search"/>
+
+    </FrameLayout>
 
 
 
@@ -30,12 +34,14 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:id="@+id/homeBtn"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
             android:src="@drawable/home_empty"/>
 
         <ImageView
+            android:id="@+id/searchBtn"
             android:src="@drawable/search_icon"
             android:layout_width="0dp"
             android:layout_height="40dp"
@@ -48,12 +54,14 @@
             android:layout_weight="1"/>
 
         <ImageView
+            android:id="@+id/likeBtn"
             android:src="@drawable/heart_icon_insta"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"/>
 
         <ImageView
+            android:id="@+id/myProfileBtn"
             android:src="@drawable/profile_icon"
             android:layout_width="0dp"
             android:layout_height="40dp"

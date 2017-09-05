@@ -7,21 +7,13 @@
     android:orientation="vertical"
     tools:context="com.example.the.instacopy.LikeActivity">
 
-    <Button
-        android:id="@+id/logoutBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="로그아웃"
-        android:visibility="gone" />
-
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
 
         <LinearLayout
-            android:id="@+id/newsfeedLayout"
+            android:id="@+id/likeListLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -32,7 +24,7 @@
 
 
             <ListView
-                android:id="@+id/newsfeedListView"
+                android:id="@+id/likeListView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"></ListView>
 
@@ -307,6 +299,9 @@
 
 
     </FrameLayout>
+
+
+
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -7,6 +7,7 @@ import java.util.Calendar;
  * Created by the on 2017-09-05.
  */
 
+
 public class NotificationData implements Serializable {
 //    데이터 설계
 
@@ -20,18 +21,16 @@ public class NotificationData implements Serializable {
 //    like : 좋아요, reply : 댓글
 
     // 관계
-    private UserData actor; // 누가 한건지.
-    private PostingData post; // 어떤 게시글?
+
 
     public NotificationData() {
     }
 
-    public NotificationData(int notificationId, Calendar createdAt, String actionType, UserData actor, PostingData post) {
+    public NotificationData(int notificationId, Calendar createdAt, String actionType) {
         this.notificationId = notificationId;
         this.createdAt = createdAt;
         this.actionType = actionType;
-        this.actor = actor;
-        this.post = post;
+
     }
 
     public int getNotificationId() {
@@ -58,20 +57,5 @@ public class NotificationData implements Serializable {
         this.actionType = actionType;
     }
 
-    public UserData getActor() {
-        return actor;
-    }
 
-    public void setActor(UserData actor) {
-        this.actor = actor;
-    }
-
-    public PostingData getPost() {
-        return post;
-    }
-
-    public void setPost(PostingData post) {
-        this.post = post;
-    }
 }
-

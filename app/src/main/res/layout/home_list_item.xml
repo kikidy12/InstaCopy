@@ -35,10 +35,11 @@
     </LinearLayout>
 
     <ImageView
-        android:layout_marginTop="5dp"
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:src="@mipmap/ic_launcher_round"/>
+        android:layout_marginTop="5dp"
+        android:src="@mipmap/ic_launcher_round" />
 
     <LinearLayout
         android:gravity="center_vertical"

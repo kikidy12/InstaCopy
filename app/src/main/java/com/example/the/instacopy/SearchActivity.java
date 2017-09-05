@@ -19,24 +19,24 @@ public class SearchActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        BindViews();
-        SetValues();
-        SetUpEvents();
+        bindViews();
+        setValues();
+        setupEvents();
     }
 
     @Override
-    public void SetUpEvents() {
+    public void setupEvents() {
 
     }
 
     @Override
-    public void SetValues() {
+    public void setValues() {
         mPhotoAdapter = new PhotoAdapter(mContext, GlobalData.photoDatas);
         photoListView.setAdapter(mPhotoAdapter);
     }
 
     @Override
-    public void BindViews() {
+    public void bindViews() {
         this.photoListView = (ListView) findViewById(R.id.photoListView);
         this.searchEdt = (EditText) findViewById(R.id.searchEdt);
     }

@@ -10,23 +10,23 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        BindViews();
-        SetUpEvents();
-        SetValues();
+        bindViews();
+        setupEvents();
+        setValues();
     }
 
     @Override
-    public void BindViews() {
-
-    }
-
-    @Override
-    public void SetUpEvents() {
+    public void bindViews() {
 
     }
 
     @Override
-    public void SetValues() {
+    public void setupEvents() {
+
+    }
+
+    @Override
+    public void setValues() {
 
     }
 }

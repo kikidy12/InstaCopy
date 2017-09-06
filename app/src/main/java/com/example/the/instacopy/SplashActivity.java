@@ -22,8 +22,9 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-
-
+        bindViews();
+        setValues();
+        setupEvents();
     }
 
     @Override
@@ -32,10 +33,9 @@ public class SplashActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent myIntent = new Intent(SplashActivity.this, LoginActivity.class);
+                Intent myIntent = new Intent(mContext, LoginActivity.class);
                 startActivity(myIntent);
                 finish();
-
             }
         }, 2000);
 

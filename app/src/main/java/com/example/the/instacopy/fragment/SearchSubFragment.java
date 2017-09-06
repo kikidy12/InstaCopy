@@ -65,6 +65,7 @@ public class SearchSubFragment extends Fragment {
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
             }
+
             @Override
             public void onPageSelected(int position) {
                 if (position == 0) {
@@ -137,23 +138,6 @@ public class SearchSubFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 searchPager.setCurrentItem(3);
-            }
-        });
-
-        searchPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
             }
         });
     }

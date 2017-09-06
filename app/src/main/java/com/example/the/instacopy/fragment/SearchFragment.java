@@ -107,6 +107,7 @@ public class SearchFragment extends Fragment {
         });
     }
 
+
     private void setValues() {
         mNewsAdapet = new NewsfeedAdapter(getActivity(), GlobalData.photoDatas);
         mPhotoAdapter = new PhotoAdapter(getActivity(), GlobalData.photoDatas);

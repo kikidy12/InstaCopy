@@ -31,8 +31,8 @@
             android:id="@+id/searchFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            class="com.example.the.instacopy.fragment.searchFragment"
-            tools:layout="@layout/fragment_search"/>
+            class="com.example.the.instacopy.fragment.SearchFragment"
+            tools:layout="@layout/frag_search"/>
 
         <fragment
             android:id="@+id/homeFragment"

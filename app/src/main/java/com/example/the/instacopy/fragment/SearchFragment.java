@@ -18,7 +18,7 @@ import com.example.the.instacopy.utils.GlobalData;
  * Created by one on 2017-09-05.
  */
 
-public class searchFragment extends Fragment {
+public class SearchFragment extends Fragment {
     PhotoAdapter mPhotoAdapter;
 
     private android.widget.EditText searchEdt;
@@ -27,7 +27,7 @@ public class searchFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_search, container, false);
+        View v = inflater.inflate(R.layout.frag_search, container, false);
         this.photoGridView2 = (GridView) v.findViewById(R.id.photoGridView2);
         this.searchEdt = (EditText) v.findViewById(R.id.searchEdt);
 

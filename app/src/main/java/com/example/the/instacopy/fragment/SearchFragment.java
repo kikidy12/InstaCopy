@@ -7,8 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.GridView;
-import android.widget.Toast;
 
 import com.example.the.instacopy.R;
 import com.example.the.instacopy.adapter.PhotoAdapter;
@@ -23,11 +23,13 @@ public class SearchFragment extends Fragment {
 
     private android.widget.EditText searchEdt;
     private GridView photoGridView2;
+    private android.widget.FrameLayout searchSubFrgment;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.frag_search, container, false);
+        this.searchSubFrgment = (FrameLayout) v.findViewById(R.id.searchSubFrgment);
         this.photoGridView2 = (GridView) v.findViewById(R.id.photoGridView2);
         this.searchEdt = (EditText) v.findViewById(R.id.searchEdt);
 
@@ -47,7 +49,8 @@ public class SearchFragment extends Fragment {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
-                    Toast.makeText(getActivity(), "tet", Toast.LENGTH_SHORT).show();
+                    photoGridView2.setVisibility(View.GONE);
+                    searchSubFrgment.setVisibility(View.VISIBLE);
                 }
             }
         });

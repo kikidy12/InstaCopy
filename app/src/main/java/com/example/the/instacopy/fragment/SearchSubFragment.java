@@ -57,8 +57,18 @@ public class SearchSubFragment extends Fragment {
         @Override
         public Fragment getItem(int position) {
 
-
-            return null;
+            if (position == 0) {
+                return new HomeFragment();
+            }
+            else if (position == 1) {
+                return new MyProfileFragment();
+            }
+            else if (position == 2) {
+                return new HomeFragment();
+            }
+            else {
+                return new MyProfileFragment();
+            }
         }
 
         @Override

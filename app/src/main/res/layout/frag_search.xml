@@ -36,6 +36,17 @@
         android:layout_height="match_parent"
         android:numColumns="3"></GridView>
 
+    <FrameLayout
+        android:visibility="gone"
+        android:id="@+id/searchSubFrgment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            class="com.example.the.instacopy.fragment.SearchSubFragment"
+            tools:layout="@layout/frag_search_sub"/>
+    </FrameLayout>
 
 
 

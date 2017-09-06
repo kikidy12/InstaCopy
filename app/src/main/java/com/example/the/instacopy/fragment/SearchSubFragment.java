@@ -1,5 +1,6 @@
 package com.example.the.instacopy.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,8 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.the.instacopy.R;
 
@@ -23,27 +23,27 @@ public class SearchSubFragment extends Fragment {
     SearchViewPageAdapter mSearchViewPageAdapter;
 
     private android.support.v4.view.ViewPager searchPager;
-    private android.widget.ImageView populTag;
-    private android.widget.ImageView peopleTag;
-    private android.widget.ImageView tagTag;
-    private android.widget.ImageView placeTag;
-    private android.widget.LinearLayout peopleLayout;
-    private android.widget.LinearLayout tagLayout;
-    private android.widget.LinearLayout placeLayout;
-    private android.widget.LinearLayout populLayout;
+    private TextView underLine1;
+    private TextView underLine2;
+    private TextView underLine3;
+    private TextView underLine4;
+    private TextView populTxt;
+    private TextView peopleTxt;
+    private TextView tagTxt;
+    private TextView placeTxt;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.frag_search_sub, container, false);
-        this.populLayout = (LinearLayout) v.findViewById(R.id.populLayout);
-        this.placeLayout = (LinearLayout) v.findViewById(R.id.placeLayout);
-        this.tagLayout = (LinearLayout) v.findViewById(R.id.tagLayout);
-        this.peopleLayout = (LinearLayout) v.findViewById(R.id.peopleLayout);
-        this.placeTag = (ImageView) v.findViewById(R.id.placeTag);
-        this.tagTag = (ImageView) v.findViewById(R.id.tagTag);
-        this.peopleTag = (ImageView) v.findViewById(R.id.peopleTag);
-        this.populTag = (ImageView) v.findViewById(R.id.populTag);
+        this.placeTxt = (TextView) v.findViewById(R.id.placeTxt);
+        this.tagTxt = (TextView) v.findViewById(R.id.tagTxt);
+        this.peopleTxt = (TextView) v.findViewById(R.id.peopleTxt);
+        this.populTxt = (TextView) v.findViewById(R.id.populTxt);
+        this.underLine4 = (TextView) v.findViewById(R.id.underLine4);
+        this.underLine3 = (TextView) v.findViewById(R.id.underLine3);
+        this.underLine2 = (TextView) v.findViewById(R.id.underLine2);
+        this.underLine1 = (TextView) v.findViewById(R.id.underLine1);
         this.searchPager = (ViewPager) v.findViewById(R.id.searchPager);
 
         return v;
@@ -68,61 +68,78 @@ public class SearchSubFragment extends Fragment {
             @Override
             public void onPageSelected(int position) {
                 if (position == 0) {
-                    populLayout.setBackgroundResource(R.color.black);
-                    peopleLayout.setBackgroundResource(R.color.white);
-                    tagLayout.setBackgroundResource(R.color.white);
-                    placeLayout.setBackgroundResource(R.color.white);
+                    underLine1.setVisibility(View.VISIBLE);
+                    populTxt.setTextColor(Color.parseColor("#000000"));
+                    underLine2.setVisibility(View.GONE);
+                    peopleTxt.setTextColor(Color.parseColor("#a0a0a0"));
+                    underLine3.setVisibility(View.GONE);
+                    tagTxt.setTextColor(Color.parseColor("#a0a0a0"));
+                    underLine4.setVisibility(View.GONE);
+                    placeTxt.setTextColor(Color.parseColor("#a0a0a0"));
                 } else if (position == 1) {
-                    populLayout.setBackgroundResource(R.color.white);
-                    peopleLayout.setBackgroundResource(R.color.black);
-                    tagLayout.setBackgroundResource(R.color.white);
-                    placeLayout.setBackgroundResource(R.color.white);
+                    underLine1.setVisibility(View.GONE);
+                    populTxt.setTextColor(Color.parseColor("#a0a0a0"));
+                    underLine2.setVisibility(View.VISIBLE);
+                    peopleTxt.setTextColor(Color.parseColor("#000000"));
+                    underLine3.setVisibility(View.GONE);
+                    tagTxt.setTextColor(Color.parseColor("#a0a0a0"));
+                    underLine4.setVisibility(View.GONE);
+                    placeTxt.setTextColor(Color.parseColor("#a0a0a0"));
                 } else if (position == 2) {
-                    populLayout.setBackgroundResource(R.color.white);
-                    peopleLayout.setBackgroundResource(R.color.white);
-                    tagLayout.setBackgroundResource(R.color.black);
-                    placeLayout.setBackgroundResource(R.color.white);
+                    underLine1.setVisibility(View.GONE);
+                    populTxt.setTextColor(Color.parseColor("#a0a0a0"));
+                    underLine2.setVisibility(View.GONE);
+                    peopleTxt.setTextColor(Color.parseColor("#a0a0a0"));
+                    underLine3.setVisibility(View.VISIBLE);
+                    tagTxt.setTextColor(Color.parseColor("#000000"));
+                    underLine4.setVisibility(View.GONE);
+                    placeTxt.setTextColor(Color.parseColor("#a0a0a0"));
                 } else {
-                    populLayout.setBackgroundResource(R.color.white);
-                    peopleLayout.setBackgroundResource(R.color.white);
-                    tagLayout.setBackgroundResource(R.color.white);
-                    placeLayout.setBackgroundResource(R.color.black);
+                    underLine1.setVisibility(View.GONE);
+                    populTxt.setTextColor(Color.parseColor("#a0a0a0"));
+                    underLine2.setVisibility(View.GONE);
+                    peopleTxt.setTextColor(Color.parseColor("#a0a0a0"));
+                    underLine3.setVisibility(View.GONE);
+                    tagTxt.setTextColor(Color.parseColor("#a0a0a0"));
+                    underLine4.setVisibility(View.VISIBLE);
+                    placeTxt.setTextColor(Color.parseColor("#000000"));
                 }
             }
-//          dasda
+
             @Override
             public void onPageScrollStateChanged(int state) {
 
             }
         });
 
-        populTag.setOnClickListener(new View.OnClickListener() {
+        populTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 searchPager.setCurrentItem(0);
             }
         });
 
-        peopleTag.setOnClickListener(new View.OnClickListener() {
+        peopleTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 searchPager.setCurrentItem(1);
             }
         });
 
-        tagTag.setOnClickListener(new View.OnClickListener() {
+        tagTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 searchPager.setCurrentItem(2);
             }
         });
 
-        placeTag.setOnClickListener(new View.OnClickListener() {
+        placeTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 searchPager.setCurrentItem(3);
             }
         });
+
 
         searchPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

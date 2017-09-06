@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <LinearLayout
@@ -11,66 +12,98 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:background="@color/black"
-            android:id="@+id/populLayout"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center">
 
-            <ImageView
-                android:id="@+id/populTag"
-                android:src="@mipmap/ic_launcher"
-                android:layout_width="40dp"
-                android:layout_height="40dp" />
+            <TextView
+                android:id="@+id/populTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="인기 검색 결과"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/underLine1"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_gravity="bottom"
+                android:background="#5DA1E0" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/peopleLayout"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center">
-            <ImageView
-                android:id="@+id/peopleTag"
-                android:src="@mipmap/ic_launcher"
-                android:layout_width="40dp"
-                android:layout_height="40dp" />
+
+            <TextView
+                android:id="@+id/peopleTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="사람"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:id="@+id/underLine2"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_gravity="bottom"
+                android:background="#5DA1E0" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/tagLayout"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center">
 
-            <ImageView
-                android:id="@+id/tagTag"
-                android:src="@mipmap/ic_launcher"
-                android:layout_width="40dp"
-                android:layout_height="40dp" />
+            <TextView
+                android:id="@+id/tagTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="태그"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:id="@+id/underLine3"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_gravity="bottom"
+                android:background="#5DA1E0" />
+
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/placeLayout"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center">
 
-            <ImageView
-                android:id="@+id/placeTag"
-                android:src="@mipmap/ic_launcher"
-                android:layout_width="40dp"
-                android:layout_height="40dp" />
+            <TextView
+                android:id="@+id/placeTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="장소"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:id="@+id/underLine4"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_gravity="bottom"
+                android:background="#5DA1E0" />
 
         </LinearLayout>
 

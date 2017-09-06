@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.example.the.instacopy.R;
-import com.example.the.instacopy.adapter.HomeAdapter;
+import com.example.the.instacopy.adapter.NewsfeedAdapter;
 import com.example.the.instacopy.utils.GlobalData;
 
 /**
@@ -19,7 +19,7 @@ import com.example.the.instacopy.utils.GlobalData;
 public class HomeFragment extends Fragment {
 
     private android.widget.ListView homeListView;
-    HomeAdapter mHomeAdapter;
+    NewsfeedAdapter mHomeAdapter;
 
     @Nullable
     @Override
@@ -43,7 +43,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void setValues() {
-        mHomeAdapter = new HomeAdapter(getActivity(), GlobalData.homeDatas);
+        mHomeAdapter = new NewsfeedAdapter(getActivity(), GlobalData.newsfeedDatas);
         homeListView.setAdapter(mHomeAdapter);
     }
 }

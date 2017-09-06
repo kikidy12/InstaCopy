@@ -9,6 +9,7 @@
     android:focusableInTouchMode="true">
 
     <LinearLayout
+        android:id="@+id/searchLayout"
         android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,6 +40,28 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/tourLayout"
+        android:visibility="gone"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/search_icon" />
+
+        <TextView
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="둘러보기"/>
+    </LinearLayout>
+
     <GridView
         android:id="@+id/photoGridView2"
         android:layout_width="match_parent"
@@ -50,12 +73,21 @@
         android:id="@+id/searchSubFrgment"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <fragment
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             class="com.example.the.instacopy.fragment.SearchSubFragment"
             tools:layout="@layout/frag_search_sub"/>
+
     </FrameLayout>
+
+    <ListView
+        android:id="@+id/newsfeedListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
 
 
 

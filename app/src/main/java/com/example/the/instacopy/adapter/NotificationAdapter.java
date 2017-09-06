@@ -22,7 +22,6 @@ import java.util.Locale;
 public class NotificationAdapter extends ArrayAdapter<NotificationData> {
 
 
-
     Context mContext;
     List<NotificationData> mList;
     LayoutInflater inf;
@@ -40,7 +39,7 @@ public class NotificationAdapter extends ArrayAdapter<NotificationData> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View row = convertView;
         if ( row == null) {
-            row = inf.inflate(R.layout.my_noti_list_item, null);
+            row = inf.inflate(R.layout.fragment_like, null);
         }
 //
 //        NotificationData data = mList.get(position);

@@ -20,6 +20,7 @@ public class NotificationData implements Serializable {
     private String actionType; // 좋아요, 댓글 구별
 //    like : 좋아요, reply : 댓글
 
+
     // 관계
 
 

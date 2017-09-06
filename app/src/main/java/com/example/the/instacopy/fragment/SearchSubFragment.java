@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.example.the.instacopy.R;
 
@@ -26,11 +27,19 @@ public class SearchSubFragment extends Fragment {
     private android.widget.ImageView peopleTag;
     private android.widget.ImageView tagTag;
     private android.widget.ImageView placeTag;
+    private android.widget.LinearLayout peopleLayout;
+    private android.widget.LinearLayout tagLayout;
+    private android.widget.LinearLayout placeLayout;
+    private android.widget.LinearLayout populLayout;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.frag_search_sub, container, false);
+        this.populLayout = (LinearLayout) v.findViewById(R.id.populLayout);
+        this.placeLayout = (LinearLayout) v.findViewById(R.id.placeLayout);
+        this.tagLayout = (LinearLayout) v.findViewById(R.id.tagLayout);
+        this.peopleLayout = (LinearLayout) v.findViewById(R.id.peopleLayout);
         this.placeTag = (ImageView) v.findViewById(R.id.placeTag);
         this.tagTag = (ImageView) v.findViewById(R.id.tagTag);
         this.peopleTag = (ImageView) v.findViewById(R.id.peopleTag);
@@ -50,6 +59,43 @@ public class SearchSubFragment extends Fragment {
     }
 
     private void setupEvents() {
+
+        searchPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+            @Override
+            public void onPageSelected(int position) {
+                if (position == 0) {
+                    populLayout.setBackgroundResource(R.color.black);
+                    peopleLayout.setBackgroundResource(R.color.white);
+                    tagLayout.setBackgroundResource(R.color.white);
+                    placeLayout.setBackgroundResource(R.color.white);
+                } else if (position == 1) {
+                    populLayout.setBackgroundResource(R.color.white);
+                    peopleLayout.setBackgroundResource(R.color.black);
+                    tagLayout.setBackgroundResource(R.color.white);
+                    placeLayout.setBackgroundResource(R.color.white);
+                } else if (position == 2) {
+                    populLayout.setBackgroundResource(R.color.white);
+                    peopleLayout.setBackgroundResource(R.color.white);
+                    tagLayout.setBackgroundResource(R.color.black);
+                    placeLayout.setBackgroundResource(R.color.white);
+                } else {
+                    populLayout.setBackgroundResource(R.color.white);
+                    peopleLayout.setBackgroundResource(R.color.white);
+                    tagLayout.setBackgroundResource(R.color.white);
+                    placeLayout.setBackgroundResource(R.color.black);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
         populTag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

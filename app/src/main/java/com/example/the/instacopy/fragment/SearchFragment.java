@@ -11,9 +11,11 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 
 import com.example.the.instacopy.R;
+import com.example.the.instacopy.adapter.NewsfeedAdapter;
 import com.example.the.instacopy.adapter.PhotoAdapter;
 import com.example.the.instacopy.utils.GlobalData;
 
@@ -23,17 +25,26 @@ import com.example.the.instacopy.utils.GlobalData;
 
 public class SearchFragment extends Fragment {
     PhotoAdapter mPhotoAdapter;
+    NewsfeedAdapter mNewsAdapet;
 
     private android.widget.EditText searchEdt;
     private GridView photoGridView2;
     private android.widget.FrameLayout searchSubFrgment;
     private android.widget.ImageView searchImg;
     private android.widget.ImageView backImg;
+    private android.widget.ListView newsfeedListView;
+    private android.widget.LinearLayout searchLayout;
+    private ImageView backBtn;
+    private android.widget.LinearLayout tourLayout;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.frag_search, container, false);
+        this.tourLayout = (LinearLayout) v.findViewById(R.id.tourLayout);
+        this.backBtn = (ImageView) v.findViewById(R.id.backBtn);
+        this.searchLayout = (LinearLayout) v.findViewById(R.id.searchLayout);
+        this.newsfeedListView = (ListView) v.findViewById(R.id.newsfeedListView);
         this.backImg = (ImageView) v.findViewById(R.id.backImg);
         this.searchImg = (ImageView) v.findViewById(R.id.searchImg);
         this.searchSubFrgment = (FrameLayout) v.findViewById(R.id.searchSubFrgment);
@@ -75,17 +86,31 @@ public class SearchFragment extends Fragment {
             }
         });
 
-
         photoGridView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(), position+"", Toast.LENGTH_SHORT).show();
+                newsfeedListView.setVisibility(View.VISIBLE);
+                photoGridView2.setVisibility(View.GONE);
+                tourLayout.setVisibility(View.VISIBLE);
+                searchLayout.setVisibility(View.GONE);
+            }
+        });
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newsfeedListView.setVisibility(View.GONE);
+                photoGridView2.setVisibility(View.VISIBLE);
+                tourLayout.setVisibility(View.GONE);
+                searchLayout.setVisibility(View.VISIBLE);
             }
         });
     }
 
     private void setValues() {
+        mNewsAdapet = new NewsfeedAdapter(getActivity(), GlobalData.photoDatas);
         mPhotoAdapter = new PhotoAdapter(getActivity(), GlobalData.photoDatas);
         photoGridView2.setAdapter(mPhotoAdapter);
+        newsfeedListView.setAdapter(mNewsAdapet);
     }
 }

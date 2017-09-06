@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -54,6 +55,7 @@ public class MyProfileFragment extends Fragment {
     }
 
     private void setupEvents() {
+
         photoView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,6 +65,7 @@ public class MyProfileFragment extends Fragment {
                 newsfeedView.setImageResource(R.drawable.ic_list_gray_24dp);
             }
         });
+
         newsfeedView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +75,7 @@ public class MyProfileFragment extends Fragment {
                 newsfeedView.setImageResource(R.drawable.ic_list_black_24dp);
             }
         });
+
     }
 
     private void setValues() {

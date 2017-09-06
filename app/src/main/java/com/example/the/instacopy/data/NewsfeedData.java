@@ -13,21 +13,20 @@ import java.util.List;
 
 public class NewsfeedData implements Serializable {
 
-    private int postingId;
+    private int newsfeedId;
     private String imageURL;
-    private String content;
+    private int likeCount; // 좋아요 개수
 
-    private User writerData;
+    private User writer;
 
     public static NewsfeedData getNewsfeedFromJsonObject(JSONObject json) {
         NewsfeedData tempNews = new NewsfeedData();
 
         try {
-            tempNews.setPostingId(json.getInt("id"));
+            tempNews.setNewsfeedId(json.getInt("id"));
             tempNews.setImageURL(json.getString("profile_url"));
-            tempNews.setContent(json.getString("content"));
 
-            tempNews.setWriterData(User.getUserFromJsonObject(json.getJSONObject("writer")));
+            tempNews.setWriter(User.getUserFromJsonObject(json.getJSONObject("writer")));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -39,21 +38,19 @@ public class NewsfeedData implements Serializable {
 
     }
 
-    public NewsfeedData(int postingId, String imageURL, String content, User writerData) {
-        this.postingId = postingId;
+    public NewsfeedData(int newsfeedId, String imageURL, int likeCount, User writer) {
+        this.newsfeedId = newsfeedId;
         this.imageURL = imageURL;
-        this.content = content;
-        this.writerData = writerData;
+        this.likeCount = likeCount;
+        this.writer = writer;
     }
 
-
-
-    public int getPostingId() {
-        return postingId;
+    public int getNewsfeedId() {
+        return newsfeedId;
     }
 
-    public void setPostingId(int postingId) {
-        this.postingId = postingId;
+    public void setNewsfeedId(int newsfeedId) {
+        this.newsfeedId = newsfeedId;
     }
 
     public String getImageURL() {
@@ -64,19 +61,19 @@ public class NewsfeedData implements Serializable {
         this.imageURL = imageURL;
     }
 
-    public String getContent() {
-        return content;
+    public int getLikeCount() {
+        return likeCount;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setLikeCount(int likeCount) {
+        this.likeCount = likeCount;
     }
 
-    public User getWriterData() {
-        return writerData;
+    public User getWriter() {
+        return writer;
     }
 
-    public void setWriterData(User writerData) {
-        this.writerData = writerData;
+    public void setWriter(User writer) {
+        this.writer = writer;
     }
 }

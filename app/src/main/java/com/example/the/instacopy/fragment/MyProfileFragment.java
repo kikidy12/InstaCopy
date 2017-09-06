@@ -1,5 +1,7 @@
 package com.example.the.instacopy.fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -36,11 +38,13 @@ public class MyProfileFragment extends Fragment {
     private android.widget.TextView idTxt;
     private android.widget.TextView nameTxt;
     private android.widget.LinearLayout photoViewFragment;
+    private ImageView seeMoreBtn;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_my_profile, container, false);
+        this.seeMoreBtn = (ImageView) v.findViewById(R.id.seeMoreBtn);
         this.photoViewFragment = (LinearLayout) v.findViewById(R.id.photoViewFragment);
         this.nameTxt = (TextView) v.findViewById(R.id.nameTxt);
         this.idTxt = (TextView) v.findViewById(R.id.idTxt);
@@ -89,6 +93,12 @@ public class MyProfileFragment extends Fragment {
                 photoGridView.setVisibility(View.GONE);
                 newsfeedListView.setVisibility(View.GONE);
                 photoViewFragment.setVisibility(View.VISIBLE);
+            }
+        });
+        seeMoreBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }

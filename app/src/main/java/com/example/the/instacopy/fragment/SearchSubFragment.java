@@ -57,6 +57,18 @@ public class SearchSubFragment extends Fragment {
         @Override
         public Fragment getItem(int position) {
 
+            if (position==0) {
+
+            }
+            else if (position==1) {
+
+            }
+            else if (position==2) {
+                return new SearchTagFragment();
+            }
+            else {
+                return new SearchPlaceFragment();
+            }
 
             return null;
         }

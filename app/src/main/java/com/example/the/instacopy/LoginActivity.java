@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.the.instacopy.data.User;
 import com.example.the.instacopy.utils.ContextUtil;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -112,8 +113,15 @@ public class LoginActivity extends BaseActivity {
                     Toast.makeText(mContext, "페이스북 로그아웃 성공", Toast.LENGTH_SHORT).show();
                 }
                 else {
+
+                    User temp = new User(0, currentProfile.getId(), currentProfile.getName(), currentProfile.getProfilePictureUri(200, 200).toString());
+
+                    ContextUtil.login(mContext, temp);
+
 //                    로그인이 된 경우
-                    Toast.makeText(mContext, "로그인한 사람 : " + ContextUtil.getLoginUser(mContext), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "로그인한 사람 : " + currentProfile.getName(), Toast.LENGTH_SHORT).show();
+
+
 
 //                    로그인에 성공했으니, 메인 화면으로 넘어가게.
                     Intent intent = new Intent(mContext, MainActivity.class);
@@ -131,7 +139,11 @@ public class LoginActivity extends BaseActivity {
 
     }
 
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        cm.onActivityResult(requestCode, resultCode, data);
+    }
 
     @Override
     public void bindViews() {

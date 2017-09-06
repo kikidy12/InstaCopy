@@ -24,6 +24,13 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/followingUnder"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_gravity="bottom"
+                android:background="#5DA1E0" />
+
         </FrameLayout>
 
         <FrameLayout
@@ -37,11 +44,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="내 게시물"
-                android:textColor="#5DA1E0"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/likeUnder"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
                 android:layout_gravity="bottom"
@@ -49,13 +58,13 @@
 
         </FrameLayout>
 
-
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/myLikeListView"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/myLikeListViewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+        android:layout_height="match_parent">
 
+    </android.support.v4.view.ViewPager>
 
 </LinearLayout>

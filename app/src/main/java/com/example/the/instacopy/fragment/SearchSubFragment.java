@@ -45,6 +45,8 @@ public class SearchSubFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         mSearchViewPageAdapter = new SearchViewPageAdapter(getActivity().getSupportFragmentManager());
+        searchPager.setAdapter(mSearchViewPageAdapter);
+        searchPager.setCurrentItem(0);
 
     }
 
@@ -58,10 +60,10 @@ public class SearchSubFragment extends Fragment {
         public Fragment getItem(int position) {
 
             if (position == 0) {
-                return new HomeFragment();
+                return new SearchPopFragment();
             }
             else if (position == 1) {
-                return new MyProfileFragment();
+                return new SearchPeopleFragment();
             }
             else if (position == 2) {
                 return new HomeFragment();

@@ -1,7 +1,6 @@
 package com.example.the.instacopy.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -9,10 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.the.instacopy.R;
-import com.example.the.instacopy.data.PhotoData;
+import com.example.the.instacopy.data.NewsfeedData;
 
 import java.util.List;
 
@@ -20,13 +19,14 @@ import java.util.List;
  * Created by the on 2017-09-05.
  */
 
-public class PhotoAdapter extends ArrayAdapter<PhotoData>{
+public class PhotoAdapter extends ArrayAdapter<NewsfeedData>{
 
     Context mContext;
-    List<PhotoData> mList;
+    List<NewsfeedData> mList;
     LayoutInflater inf;
+    int[] dogs = {R.drawable.dog1, R.drawable.dog2, R.drawable.dog3};
 
-    public PhotoAdapter(Context context, List<PhotoData> list) {
+    public PhotoAdapter(Context context, List<NewsfeedData> list) {
         super(context, R.layout.photo_list_item, list);
 
         mContext = context;
@@ -42,12 +42,12 @@ public class PhotoAdapter extends ArrayAdapter<PhotoData>{
             row = inf.inflate(R.layout.photo_list_item, null);
         }
 
-//        final PhotoData data = mList.get(position);
-        return row;
-    }
+//        NewsfeedData data = mList.get(position);
 
-    @Override
-    public int getCount() {
-        return 20;
+        ImageView photoImg = (ImageView) row.findViewById(R.id.photoImg);
+        photoImg.setImageResource(dogs[position%3]);
+//        Glide.with(mContext).load(data.getImageURL()).into(photoImg);
+
+        return row;
     }
 }

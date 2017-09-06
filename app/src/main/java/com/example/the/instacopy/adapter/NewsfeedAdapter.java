@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
 import com.example.the.instacopy.R;
-import com.example.the.instacopy.data.HomeData;
+import com.example.the.instacopy.data.NewsfeedData;
 
 import java.util.List;
 
@@ -17,14 +17,14 @@ import java.util.List;
  * Created by the on 2017-09-05.
  */
 
-public class HomeAdapter extends ArrayAdapter<HomeData> {
+public class NewsfeedAdapter extends ArrayAdapter<NewsfeedData> {
 
     Context mContext;
-    List<HomeData> mList;
+    List<NewsfeedData> mList;
     LayoutInflater inf;
 
-    public HomeAdapter(Context context, List<HomeData> list) {
-        super(context, R.layout.home_list_item, list);
+    public NewsfeedAdapter(Context context, List<NewsfeedData> list) {
+        super(context, R.layout.newsfeed_list_item, list);
 
         mContext = context;
         mList = list;
@@ -37,7 +37,7 @@ public class HomeAdapter extends ArrayAdapter<HomeData> {
         View row = convertView;
 
         if (row==null) {
-            row = inf.inflate(R.layout.home_list_item, null);
+            row = inf.inflate(R.layout.newsfeed_list_item, null);
         }
         return row;
     }

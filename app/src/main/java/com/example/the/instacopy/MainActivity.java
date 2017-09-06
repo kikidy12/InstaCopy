@@ -5,6 +5,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import com.example.the.instacopy.utils.GlobalData;
+
 public class MainActivity extends BaseActivity {
 
 
@@ -22,6 +24,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+        GlobalData.initGlobalData();
 
         bindViews();
         setupEvents();

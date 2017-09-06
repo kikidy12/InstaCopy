@@ -1,7 +1,7 @@
 package com.example.the.instacopy.utils;
 
-import com.example.the.instacopy.data.HomeData;
-import com.example.the.instacopy.data.PhotoData;
+import com.example.the.instacopy.data.NewsfeedData;
+import com.example.the.instacopy.data.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +12,18 @@ import java.util.List;
 
 public class GlobalData {
 
-    public static List<PhotoData> photoDatas = new ArrayList<>();
-    public static List<HomeData> homeDatas = new ArrayList<>();
+    public static List<NewsfeedData> photoDatas = new ArrayList<>();
+    public static List<NewsfeedData> newsfeedDatas = new ArrayList<>();
 
     public static void initGlobalData() {
+        photoDatas.clear();
+        photoDatas.add(new NewsfeedData(0,"temp", "", new User()));
+        photoDatas.add(new NewsfeedData(0,"temp", "", new User()));
+        photoDatas.add(new NewsfeedData(0,"temp", "", new User()));
+        photoDatas.add(new NewsfeedData(0,"temp", "", new User()));
+        photoDatas.add(new NewsfeedData(0,"temp", "", new User()));
+        photoDatas.add(new NewsfeedData(0,"temp", "", new User()));
+        photoDatas.add(new NewsfeedData(0,"temp", "", new User()));
+        photoDatas.add(new NewsfeedData(0,"temp", "", new User()));
     }
 }

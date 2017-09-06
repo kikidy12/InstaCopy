@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">InstaCopy</string>
-    <string name="facebook_app_id">551559818517999</string>
-    <string name="fb_login_protocol_scheme">fb551559818517999</string>
+    <string userName="app_name">InstaCopy</string>
+    <string userName="facebook_app_id">551559818517999</string>
+    <string userName="fb_login_protocol_scheme">fb551559818517999</string>
 </resources>

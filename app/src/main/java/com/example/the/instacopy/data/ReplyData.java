@@ -12,7 +12,7 @@ public class ReplyData implements Serializable {
     private int newsfeedId; // 댓글이 달리는 뉴스피드 아이디
     private String replyContent; // 댓글 내용
 
-    private User writter; // 댓글을 단 사용자의 정보
+    private User writer; // 댓글을 단 사용자의 정보
 
     public ReplyData() {
     }
@@ -21,7 +21,7 @@ public class ReplyData implements Serializable {
         this.replyId = replyId;
         this.newsfeedId = newsfeedId;
         this.replyContent = replyContent;
-        this.writter = writter;
+        this.writer = writer;
     }
 
     public int getReplyId() {
@@ -49,10 +49,10 @@ public class ReplyData implements Serializable {
     }
 
     public User getWritter() {
-        return writter;
+        return writer;
     }
 
     public void setWritter(User writter) {
-        this.writter = writter;
+        this.writer = writter;
     }
 }

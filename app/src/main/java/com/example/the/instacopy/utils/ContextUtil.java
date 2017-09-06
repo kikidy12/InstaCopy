@@ -36,8 +36,8 @@ public class ContextUtil {
 
         pref.edit().putInt(ID, loginUser.getId()).commit();
         pref.edit().putString(USER_ID, loginUser.getUserId()).commit();
-        pref.edit().putString(USER_NAME, loginUser.getName()).commit();
-        pref.edit().putString(USER_PROFILE_URL, loginUser.getProfileImgURL()).commit();
+        pref.edit().putString(USER_NAME, loginUser.getUserName()).commit();
+        pref.edit().putString(USER_PROFILE_URL, loginUser.getUserProfileImgURL()).commit();
     }
 
     public static User getLoginUser(Context context) {
@@ -51,8 +51,8 @@ public class ContextUtil {
             loginUser = new User();
             loginUser.setId(pref.getInt(ID, 0));
             loginUser.setUserId(pref.getString(USER_ID, ""));
-            loginUser.setName(pref.getString(USER_NAME, ""));
-            loginUser.setProfileImgURL(pref.getString(USER_PROFILE_URL, ""));
+            loginUser.setUserName(pref.getString(USER_NAME, ""));
+            loginUser.setUserProfileImgURL(pref.getString(USER_PROFILE_URL, ""));
         }
 
         return loginUser;

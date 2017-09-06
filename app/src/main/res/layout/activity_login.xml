@@ -28,6 +28,7 @@
         android:padding="30dp">
 
         <EditText
+            android:id="@+id/idEdt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/login_edittext_background"
@@ -35,6 +36,7 @@
             android:padding="10dp" />
 
         <EditText
+            android:id="@+id/pwEdt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

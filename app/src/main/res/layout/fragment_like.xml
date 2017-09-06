@@ -15,7 +15,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/FollowingTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -32,6 +32,7 @@
             android:layout_weight="1">
 
             <TextView
+                android:id="@+id/myPostTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -52,12 +53,9 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/myNotiListView"
+        android:id="@+id/myLikeListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ListView>
-
-
-
 
 
 </LinearLayout>

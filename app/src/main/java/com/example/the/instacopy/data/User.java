@@ -10,30 +10,35 @@ import java.util.List;
 
 public class User implements Serializable {
 
-    private int userId;
+    private int id;
+    private String userId;
     private String name;
-    private String nickName;
     private String profileImgURL;
-
-    List<User> followers = new ArrayList<>();
-    List<User> followings = new ArrayList<>();
 
     public User() {
 
     }
 
-    public User(int userId, String name, String nickName, String profileImgURL) {
+    public User(int id, String userId, String name, String profileImgURL) {
+        this.id = id;
         this.userId = userId;
         this.name = name;
-        this.nickName = nickName;
         this.profileImgURL = profileImgURL;
     }
 
-    public int getUserId() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -45,35 +50,11 @@ public class User implements Serializable {
         this.name = name;
     }
 
-    public String getNickName() {
-        return nickName;
-    }
-
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
-    }
-
     public String getProfileImgURL() {
         return profileImgURL;
     }
 
     public void setProfileImgURL(String profileImgURL) {
         this.profileImgURL = profileImgURL;
-    }
-
-    public List<User> getFollowers() {
-        return followers;
-    }
-
-    public void setFollowers(List<User> followers) {
-        this.followers = followers;
-    }
-
-    public List<User> getFollowings() {
-        return followings;
-    }
-
-    public void setFollowings(List<User> followings) {
-        this.followings = followings;
     }
 }

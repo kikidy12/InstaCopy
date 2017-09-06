@@ -6,9 +6,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import com.example.the.instacopy.R;
 import com.example.the.instacopy.adapter.PhotoAdapter;
@@ -52,6 +54,13 @@ public class SearchFragment extends Fragment {
                     photoGridView2.setVisibility(View.GONE);
                     searchSubFrgment.setVisibility(View.VISIBLE);
                 }
+            }
+        });
+
+        photoGridView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getActivity(), position+"", Toast.LENGTH_SHORT).show();
             }
         });
     }

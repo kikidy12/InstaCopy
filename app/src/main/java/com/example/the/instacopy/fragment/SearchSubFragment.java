@@ -123,23 +123,6 @@ public class SearchSubFragment extends Fragment {
                 searchPager.setCurrentItem(3);
             }
         });
-
-        searchPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
     }
 
     private void setValues() {

@@ -1,5 +1,8 @@
 package com.example.the.instacopy.data;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +19,22 @@ public class NewsfeedData implements Serializable {
 
     private User writerData;
 
+    public static NewsfeedData getNewsfeedFromJsonObject(JSONObject json) {
+        NewsfeedData tempNews = new NewsfeedData();
+
+        try {
+            tempNews.setPostingId(json.getInt("id"));
+            tempNews.setImageURL(json.getString("profile_url"));
+            tempNews.setContent(json.getString("content"));
+
+            tempNews.setWriterData(User.getUserFromJsonObject(json.getJSONObject("writer")));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return tempNews;
+    }
+
     public NewsfeedData() {
 
     }
@@ -26,6 +45,8 @@ public class NewsfeedData implements Serializable {
         this.content = content;
         this.writerData = writerData;
     }
+
+
 
     public int getPostingId() {
         return postingId;

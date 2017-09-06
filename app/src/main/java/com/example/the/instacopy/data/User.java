@@ -1,5 +1,8 @@
 package com.example.the.instacopy.data;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +17,19 @@ public class User implements Serializable {
     private String userId;
     private String name;
     private String profileImgURL;
+
+    public static User getUserFromJsonObject(JSONObject json) {
+        User tempUser = new User();
+        try {
+            tempUser.setId(json.getInt("id"));
+            tempUser.setUserId(json.getString("user_id"));
+            tempUser.setName(json.getString("name"));
+            tempUser.setProfileImgURL(json.getString("profile_photo"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return tempUser;
+    }
 
     public User() {
 

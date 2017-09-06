@@ -15,6 +15,7 @@
         android:padding="10dp">
 
         <TextView
+            android:id="@+id/idTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="pyj2001sus"
@@ -31,18 +32,20 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginRight="5dp"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@drawable/ic_restore_black_24dp" />
 
             <ImageView
+                android:layout_marginLeft="5dp"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginRight="5dp"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@drawable/friend_icon" />
 
             <ImageView
+                android:layout_marginLeft="5dp"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@drawable/ic_more_vert_black_24dp" />
 
         </LinearLayout>
 
@@ -172,6 +175,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/nameTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
@@ -192,7 +196,7 @@
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:layout_weight="1"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@drawable/ic_view_module_black_24dp" />
 
 
         <ImageView
@@ -200,7 +204,7 @@
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:layout_weight="1"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@drawable/ic_list_gray_24dp" />
 
     </LinearLayout>
 
@@ -214,18 +218,20 @@
         android:layout_height="1dp"
         android:background="@color/gray_line" />
 
-    <GridView
-        android:id="@+id/photoGridView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:numColumns="3"></GridView>
-
     <ListView
         android:id="@+id/newsfeedListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ListView>
 
+    <GridView
+        android:layout_marginTop="10dp"
+        android:id="@+id/photoGridView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="3"></GridView>
+
     <LinearLayout
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#FAFAFA"

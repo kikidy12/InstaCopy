@@ -70,42 +70,42 @@
         android:background="#A0A0A0"/>
 
     <LinearLayout
-        android:padding="10dp"
+        android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/homeBtn"
             android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:layout_weight="1"
-            android:src="@drawable/home_empty"/>
+            android:src="@drawable/ic_home_black_24dp"/>
 
         <ImageView
             android:id="@+id/searchBtn"
-            android:src="@drawable/search_icon"
+            android:src="@drawable/ic_search_gray_24dp"
             android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:layout_weight="1"/>
 
         <ImageView
             android:src="@drawable/add_img"
             android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:layout_weight="1"/>
 
         <ImageView
             android:id="@+id/likeBtn"
-            android:src="@drawable/heart_icon_insta"
+            android:src="@drawable/heart_gray"
             android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:layout_weight="1"/>
 
         <ImageView
             android:id="@+id/myProfileBtn"
-            android:src="@drawable/profile_icon"
+            android:src="@drawable/ic_account_box_gray_24dp"
             android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:layout_weight="1"/>
 
     </LinearLayout>

@@ -9,24 +9,33 @@
     android:focusableInTouchMode="true">
 
     <LinearLayout
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:gravity="center_vertical">
 
         <ImageView
-            android:layout_margin="5dp"
-            android:src="@drawable/search_icon"
+            android:id="@+id/searchImg"
             android:layout_width="30dp"
-            android:layout_height="30dp" />
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/search_icon" />
+
+        <ImageView
+            android:id="@+id/backImg"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:visibility="gone" />
 
         <EditText
             android:id="@+id/searchEdt"
-            android:hint="검색"
-            android:background="#FAFAFA"
-            android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@color/white"
+            android:hint="검색" />
 
     </LinearLayout>
 

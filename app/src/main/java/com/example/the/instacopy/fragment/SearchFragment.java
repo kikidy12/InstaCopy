@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.the.instacopy.R;
@@ -26,11 +27,15 @@ public class SearchFragment extends Fragment {
     private android.widget.EditText searchEdt;
     private GridView photoGridView2;
     private android.widget.FrameLayout searchSubFrgment;
+    private android.widget.ImageView searchImg;
+    private android.widget.ImageView backImg;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.frag_search, container, false);
+        this.backImg = (ImageView) v.findViewById(R.id.backImg);
+        this.searchImg = (ImageView) v.findViewById(R.id.searchImg);
         this.searchSubFrgment = (FrameLayout) v.findViewById(R.id.searchSubFrgment);
         this.photoGridView2 = (GridView) v.findViewById(R.id.photoGridView2);
         this.searchEdt = (EditText) v.findViewById(R.id.searchEdt);
@@ -53,9 +58,23 @@ public class SearchFragment extends Fragment {
                 if (hasFocus) {
                     photoGridView2.setVisibility(View.GONE);
                     searchSubFrgment.setVisibility(View.VISIBLE);
+                    backImg.setVisibility(View.VISIBLE);
+                    searchImg.setVisibility(View.GONE);
                 }
             }
         });
+
+        backImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                photoGridView2.setVisibility(View.VISIBLE);
+                searchSubFrgment.setVisibility(View.GONE);
+                backImg.setVisibility(View.GONE);
+                searchImg.setVisibility(View.VISIBLE);
+                searchEdt.clearFocus();
+            }
+        });
+
 
         photoGridView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

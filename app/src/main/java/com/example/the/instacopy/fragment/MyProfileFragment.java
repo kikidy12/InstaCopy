@@ -3,6 +3,7 @@ package com.example.the.instacopy.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,6 +59,8 @@ public class MyProfileFragment extends Fragment {
             public void onClick(View v) {
                 photoGridView.setVisibility(View.VISIBLE);
                 newsfeedListView.setVisibility(View.GONE);
+                photoView.setImageResource(R.drawable.ic_view_module_black_24dp);
+                newsfeedView.setImageResource(R.drawable.ic_list_gray_24dp);
             }
         });
         newsfeedView.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +68,8 @@ public class MyProfileFragment extends Fragment {
             public void onClick(View v) {
                 photoGridView.setVisibility(View.GONE);
                 newsfeedListView.setVisibility(View.VISIBLE);
+                photoView.setImageResource(R.drawable.ic_view_module_gray_24dp);
+                newsfeedView.setImageResource(R.drawable.ic_list_black_24dp);
             }
         });
     }

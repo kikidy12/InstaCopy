@@ -40,6 +40,10 @@ public class MainActivity extends BaseActivity {
                 searchFragment.setVisibility(View.GONE);
                 likeFragment.setVisibility(View.GONE);
                 myProfileFragment.setVisibility(View.GONE);
+                homeBtn.setImageResource(R.drawable.ic_home_black_24dp);
+                searchBtn.setImageResource(R.drawable.ic_search_gray_24dp);
+                likeBtn.setImageResource(R.drawable.heart_gray);
+                myProfileBtn.setImageResource(R.drawable.ic_account_box_gray_24dp);
             }
         });
         searchBtn.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +53,10 @@ public class MainActivity extends BaseActivity {
                 searchFragment.setVisibility(View.VISIBLE);
                 likeFragment.setVisibility(View.GONE);
                 myProfileFragment.setVisibility(View.GONE);
+                homeBtn.setImageResource(R.drawable.ic_home_gray_24dp);
+                searchBtn.setImageResource(R.drawable.ic_search_black_24dp);
+                likeBtn.setImageResource(R.drawable.heart_gray);
+                myProfileBtn.setImageResource(R.drawable.ic_account_box_gray_24dp);
             }
         });
 
@@ -59,6 +67,10 @@ public class MainActivity extends BaseActivity {
                 searchFragment.setVisibility(View.GONE);
                 likeFragment.setVisibility(View.VISIBLE);
                 myProfileFragment.setVisibility(View.GONE);
+                homeBtn.setImageResource(R.drawable.ic_home_gray_24dp);
+                searchBtn.setImageResource(R.drawable.ic_search_gray_24dp);
+                likeBtn.setImageResource(R.drawable.heart_black);
+                myProfileBtn.setImageResource(R.drawable.ic_account_box_gray_24dp);
             }
         });
 
@@ -69,6 +81,10 @@ public class MainActivity extends BaseActivity {
                 searchFragment.setVisibility(View.GONE);
                 likeFragment.setVisibility(View.GONE);
                 myProfileFragment.setVisibility(View.VISIBLE);
+                homeBtn.setImageResource(R.drawable.ic_home_gray_24dp);
+                searchBtn.setImageResource(R.drawable.ic_search_gray_24dp);
+                likeBtn.setImageResource(R.drawable.heart_gray);
+                myProfileBtn.setImageResource(R.drawable.ic_account_box_black_24dp);
             }
         });
     }

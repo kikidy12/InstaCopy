@@ -7,13 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
 import com.example.the.instacopy.R;
-import com.example.the.instacopy.datas.NotificationData;
+import com.example.the.instacopy.data.NotificationData;
 
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by the on 2017-09-05.
@@ -39,7 +37,7 @@ public class NotificationAdapter extends ArrayAdapter<NotificationData> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View row = convertView;
         if ( row == null) {
-            row = inf.inflate(R.layout.fragment_like, null);
+            row = inf.inflate(R.layout.my_noti_list_item, null);
         }
 //
 //        NotificationData data = mList.get(position);

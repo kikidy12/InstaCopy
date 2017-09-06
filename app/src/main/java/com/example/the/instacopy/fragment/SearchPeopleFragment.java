@@ -18,7 +18,7 @@ public class SearchPeopleFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_search_pop, container, false);
+        View v = inflater.inflate(R.layout.fragment_search_people, container, false);
 
         return v;
     }

@@ -10,32 +10,59 @@
 
 
     <FrameLayout
-        android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <fragment
-            android:id="@+id/myProfileFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            class="com.example.the.instacopy.fragment.MyProfileFragment"
-            tools:layout="@layout/fragment_my_profile"/>
-
-    </FrameLayout>
-
-    <FrameLayout
+        android:id="@+id/homeFragment"
         android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
 
         <fragment
-            android:id="@+id/searchFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            class="com.example.the.instacopy.fragment.HomeFragment"
+            tools:layout="@layout/fragment_home"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/searchFragment"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <fragment
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             class="com.example.the.instacopy.fragment.SearchFragment"
             tools:layout="@layout/frag_search"/>
     </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/likeFragment"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            class="com.example.the.instacopy.fragment.LikeFragment"
+            tools:layout="@layout/fragment_like"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/myProfileFragment"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            class="com.example.the.instacopy.fragment.MyProfileFragment"
+            tools:layout="@layout/fragment_my_profile"/>
+    </FrameLayout>
+
+
 
     <TextView
         android:layout_width="match_parent"

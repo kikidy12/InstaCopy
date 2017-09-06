@@ -1,6 +1,5 @@
 package com.example.the.instacopy.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,9 +11,7 @@ import android.widget.TextView;
 
 import com.example.the.instacopy.R;
 import com.example.the.instacopy.adapter.NotificationAdapter;
-import com.example.the.instacopy.adapter.PhotoAdapter;
-import com.example.the.instacopy.datas.NotificationData;
-import com.example.the.instacopy.utils.GlobalData;
+import com.example.the.instacopy.data.NotificationData;
 
 import java.util.ArrayList;
 import java.util.List;

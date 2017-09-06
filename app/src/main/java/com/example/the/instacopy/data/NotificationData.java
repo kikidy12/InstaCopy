@@ -1,4 +1,4 @@
-package com.example.the.instacopy.datas;
+package com.example.the.instacopy.data;
 
 import java.io.Serializable;
 import java.util.Calendar;

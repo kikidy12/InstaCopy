@@ -44,10 +44,62 @@ public class SearchSubFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        setValues();
+        setupEvents();
+
+    }
+
+    private void setupEvents() {
+        populTag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchPager.setCurrentItem(0);
+            }
+        });
+
+        peopleTag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchPager.setCurrentItem(1);
+            }
+        });
+
+        tagTag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchPager.setCurrentItem(2);
+            }
+        });
+
+        placeTag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchPager.setCurrentItem(3);
+            }
+        });
+
+        searchPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
+
+    private void setValues() {
         mSearchViewPageAdapter = new SearchViewPageAdapter(getActivity().getSupportFragmentManager());
         searchPager.setAdapter(mSearchViewPageAdapter);
         searchPager.setCurrentItem(0);
-
     }
 
     public class SearchViewPageAdapter extends FragmentStatePagerAdapter {
@@ -66,10 +118,10 @@ public class SearchSubFragment extends Fragment {
                 return new SearchPeopleFragment();
             }
             else if (position == 2) {
-                return new HomeFragment();
+                return new SearchTagFragment();
             }
             else {
-                return new MyProfileFragment();
+                return new SearchPlaceFragment();
             }
         }
 

@@ -89,7 +89,7 @@ public class SearchSubFragment extends Fragment {
                     placeLayout.setBackgroundResource(R.color.black);
                 }
             }
-
+//          dasda
             @Override
             public void onPageScrollStateChanged(int state) {
 

@@ -4,8 +4,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by the on 2017-09-05.
@@ -15,16 +13,16 @@ public class User implements Serializable {
 
     private int id;
     private String userId;
-    private String name;
-    private String profileImgURL;
+    private String userName;
+    private String userProfileImgURL;
 
     public static User getUserFromJsonObject(JSONObject json) {
         User tempUser = new User();
         try {
             tempUser.setId(json.getInt("id"));
             tempUser.setUserId(json.getString("user_id"));
-            tempUser.setName(json.getString("name"));
-            tempUser.setProfileImgURL(json.getString("profile_photo"));
+            tempUser.setUserName(json.getString("userName"));
+            tempUser.setUserProfileImgURL(json.getString("userProfileImgURL"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -38,8 +36,8 @@ public class User implements Serializable {
     public User(int id, String userId, String name, String profileImgURL) {
         this.id = id;
         this.userId = userId;
-        this.name = name;
-        this.profileImgURL = profileImgURL;
+        this.userName = name;
+        this.userProfileImgURL = profileImgURL;
     }
 
     public int getId() {
@@ -58,19 +56,19 @@ public class User implements Serializable {
         this.userId = userId;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getProfileImgURL() {
-        return profileImgURL;
+    public String getUserProfileImgURL() {
+        return userProfileImgURL;
     }
 
-    public void setProfileImgURL(String profileImgURL) {
-        this.profileImgURL = profileImgURL;
+    public void setUserProfileImgURL(String userProfileImgURL) {
+        this.userProfileImgURL = userProfileImgURL;
     }
 }

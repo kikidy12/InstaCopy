@@ -19,13 +19,5 @@ public class GlobalData {
 
     public static void initGlobalData() {
         photoDatas.clear();
-        photoDatas.add(new NewsfeedData(0,"temp", "", new User()));
-        photoDatas.add(new NewsfeedData(0,"temp", "", new User()));
-        photoDatas.add(new NewsfeedData(0,"temp", "", new User()));
-        photoDatas.add(new NewsfeedData(0,"temp", "", new User()));
-        photoDatas.add(new NewsfeedData(0,"temp", "", new User()));
-        photoDatas.add(new NewsfeedData(0,"temp", "", new User()));
-        photoDatas.add(new NewsfeedData(0,"temp", "", new User()));
-        photoDatas.add(new NewsfeedData(0,"temp", "", new User()));
     }
 }

@@ -16,8 +16,9 @@
 
             <TextView
                 android:id="@+id/FollowingTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:text="팔로잉"
                 android:textColor="@color/black"
@@ -27,9 +28,9 @@
             <TextView
                 android:id="@+id/followingUnder"
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
+                android:layout_height="2dp"
                 android:layout_gravity="bottom"
-                android:background="#5DA1E0" />
+                android:background="@color/black" />
 
         </FrameLayout>
 
@@ -40,9 +41,9 @@
 
             <TextView
                 android:id="@+id/myPostTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
                 android:text="내 게시물"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -52,9 +53,9 @@
                 android:id="@+id/likeUnder"
                 android:visibility="gone"
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
+                android:layout_height="2dp"
                 android:layout_gravity="bottom"
-                android:background="#5DA1E0" />
+                android:background="@color/black" />
 
         </FrameLayout>
 

@@ -7,6 +7,20 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/photoViewFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            class="com.example.the.instacopy.fragment.photoViewFragment"
+            tools:layout="@layout/newsfeed_list_item"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FAFAFA"
@@ -218,17 +232,19 @@
         android:layout_height="1dp"
         android:background="@color/gray_line" />
 
-    <ListView
-        android:id="@+id/newsfeedListView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
-
     <GridView
         android:layout_marginTop="10dp"
         android:id="@+id/photoGridView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:numColumns="3"></GridView>
+
+
+    <ListView
+        android:visibility="gone"
+        android:id="@+id/newsfeedListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
 
     <LinearLayout
         android:layout_marginTop="10dp"

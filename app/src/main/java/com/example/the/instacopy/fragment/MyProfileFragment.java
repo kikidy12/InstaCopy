@@ -3,13 +3,15 @@ package com.example.the.instacopy.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.the.instacopy.R;
 import com.example.the.instacopy.adapter.NewsfeedAdapter;
@@ -31,11 +33,17 @@ public class MyProfileFragment extends Fragment {
     private android.widget.ImageView photoView;
     private android.widget.ImageView newsfeedView;
     private android.widget.ListView newsfeedListView;
+    private android.widget.TextView idTxt;
+    private android.widget.TextView nameTxt;
+    private android.widget.LinearLayout photoViewFragment;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_my_profile, container, false);
+        this.photoViewFragment = (LinearLayout) v.findViewById(R.id.photoViewFragment);
+        this.nameTxt = (TextView) v.findViewById(R.id.nameTxt);
+        this.idTxt = (TextView) v.findViewById(R.id.idTxt);
         this.newsfeedListView = (ListView) v.findViewById(R.id.newsfeedListView);
         this.newsfeedView = (ImageView) v.findViewById(R.id.newsfeedView);
         this.photoView = (ImageView) v.findViewById(R.id.photoView);
@@ -59,6 +67,7 @@ public class MyProfileFragment extends Fragment {
             public void onClick(View v) {
                 photoGridView.setVisibility(View.VISIBLE);
                 newsfeedListView.setVisibility(View.GONE);
+                photoViewFragment.setVisibility(View.GONE);
                 photoView.setImageResource(R.drawable.ic_view_module_black_24dp);
                 newsfeedView.setImageResource(R.drawable.ic_list_gray_24dp);
             }
@@ -68,8 +77,18 @@ public class MyProfileFragment extends Fragment {
             public void onClick(View v) {
                 photoGridView.setVisibility(View.GONE);
                 newsfeedListView.setVisibility(View.VISIBLE);
+                photoViewFragment.setVisibility(View.GONE);
                 photoView.setImageResource(R.drawable.ic_view_module_gray_24dp);
                 newsfeedView.setImageResource(R.drawable.ic_list_black_24dp);
+            }
+        });
+
+        photoGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                photoGridView.setVisibility(View.GONE);
+                newsfeedListView.setVisibility(View.GONE);
+                photoViewFragment.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -79,5 +98,10 @@ public class MyProfileFragment extends Fragment {
         photoGridView.setAdapter(mPhotoAdapter);
         mNewsfeedAdapter = new NewsfeedAdapter(getActivity(), GlobalData.newsfeedDatas);
         newsfeedListView.setAdapter(mNewsfeedAdapter);
+    }
+
+    public void hidePhoto() {
+        photoViewFragment.setVisibility(View.GONE);
+        photoGridView.setVisibility(View.VISIBLE);
     }
 }

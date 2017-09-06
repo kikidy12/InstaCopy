@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.example.the.instacopy.MyProfileActivity">
+    android:orientation="vertical">
 
     <LinearLayout
-        android:background="#FAFAFA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#FAFAFA"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="10dp">
@@ -55,9 +54,9 @@
         android:background="@color/gray_line" />
 
     <LinearLayout
-        android:background="#FFFFFF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#FFFFFF"
         android:orientation="horizontal"
         android:padding="10dp">
 
@@ -173,9 +172,9 @@
     </LinearLayout>
 
     <TextView
-        android:background="#FFFFFF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#FFFFFF"
         android:padding="10dp"
         android:text="Young Joo Park"
         android:textColor="@color/black"
@@ -188,9 +187,9 @@
         android:background="@color/gray_line" />
 
     <LinearLayout
-        android:background="#FFFFFF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#FFFFFF"
         android:padding="5dp">
 
         <ImageView
@@ -224,39 +223,46 @@
         android:layout_height="1dp"
         android:background="@color/gray_line" />
 
-    <LinearLayout
-        android:gravity="center"
-        android:background="#FAFAFA"
+    <GridView
+        android:id="@+id/photoGridView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:numColumns="3"></GridView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FAFAFA"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <ImageView
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@mipmap/ic_launcher" />
 
         <TextView
-            android:layout_marginTop="10dp"
-            android:textColor="@color/black"
-            android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="프로필"/>
+            android:layout_marginTop="10dp"
+            android:text="프로필"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
         <TextView
-            android:layout_marginTop="10dp"
-            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="사진과 동영상을 공유하면 프로필에 표시됩니다."/>
+            android:layout_marginTop="10dp"
+            android:text="사진과 동영상을 공유하면 프로필에 표시됩니다."
+            android:textColor="@color/black" />
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:textColor="#5FA8F1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="첫 사진/동영상을 공유해보세요"/>
+            android:text="첫 사진/동영상을 공유해보세요"
+            android:textColor="#5FA8F1" />
 
     </LinearLayout>
 

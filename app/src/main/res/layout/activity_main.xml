@@ -7,7 +7,22 @@
     android:background="#FFFFFF"
     tools:context="com.example.the.instacopy.MainActivity"
     android:orientation="vertical">
+
     <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <fragment
+            android:id="@+id/myProfileFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            class="com.example.the.instacopy.fragment.MyProfileFragment"
+            tools:layout="@layout/fragment_my_profile"/>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
@@ -18,6 +33,13 @@
             android:layout_height="match_parent"
             class="com.example.the.instacopy.fragment.searchFragment"
             tools:layout="@layout/fragment_search"/>
+
+        <fragment
+            android:id="@+id/homeFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            class="com.example.the.instacopy.fragment.HomeFragment"
+            tools:layout="@layout/fragment_home"/>
 
     </FrameLayout>
 

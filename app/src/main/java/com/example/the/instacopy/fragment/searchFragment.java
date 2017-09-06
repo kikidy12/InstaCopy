@@ -37,6 +37,7 @@ public class searchFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         setValues();
         setupEvents();
     }
@@ -52,7 +53,7 @@ public class searchFragment extends Fragment {
         });
     }
 
-    public void setValues() {
+    private void setValues() {
         mPhotoAdapter = new PhotoAdapter(getActivity(), GlobalData.photoDatas);
         photoGridView2.setAdapter(mPhotoAdapter);
     }

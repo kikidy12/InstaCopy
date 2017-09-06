@@ -1,16 +1,16 @@
 package com.example.the.instacopy;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.view.View;
 import android.widget.ImageView;
 
 public class MainActivity extends BaseActivity {
 
-    private android.support.v4.view.ViewPager mainViewPager;
+
+    private ImageView homeBtn;
+    private ImageView searchBtn;
+    private ImageView likeBtn;
+    private ImageView myProfileBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,33 +25,20 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void setupEvents() {
-
     }
 
     @Override
     public void setValues() {
-        mainViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
     }
 
 
     @Override
     public void bindViews() {
-        this.mainViewPager = (ViewPager) findViewById(R.id.mainViewPager);
+        this.myProfileBtn = (ImageView) findViewById(R.id.myProfileBtn);
+        this.likeBtn = (ImageView) findViewById(R.id.likeBtn);
+        this.searchBtn = (ImageView) findViewById(R.id.searchBtn);
+        this.homeBtn = (ImageView) findViewById(R.id.homeBtn);
     }
 
 }

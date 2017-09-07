@@ -1,5 +1,6 @@
 package com.example.the.instacopy.fragment;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.the.instacopy.MyProfileOptionActivity;
+import com.example.the.instacopy.ProfileSettingActivity;
 import com.example.the.instacopy.R;
 import com.example.the.instacopy.adapter.NewsfeedAdapter;
 import com.example.the.instacopy.adapter.PhotoAdapter;
@@ -39,11 +41,15 @@ public class MyProfileFragment extends Fragment {
     private android.widget.TextView nameTxt;
     private android.widget.LinearLayout photoViewFragment;
     private ImageView seeMoreBtn;
+    private ImageView findPeopleImg;
+    private TextView profileSettingTxt;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_my_profile, container, false);
+        this.profileSettingTxt = (TextView) v.findViewById(R.id.profileSettingTxt);
+        this.findPeopleImg = (ImageView) v.findViewById(R.id.findPeopleImg);
         this.photoViewFragment = (LinearLayout) v.findViewById(R.id.photoViewFragment);
         this.nameTxt = (TextView) v.findViewById(R.id.nameTxt);
         this.idTxt = (TextView) v.findViewById(R.id.idTxt);
@@ -61,12 +67,32 @@ public class MyProfileFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         setValues();
         setupEvents();
     }
 
     private void setupEvents() {
+
+        profileSettingTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ProfileSettingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        profileimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("스토리에 추가");
+                builder.setMessage("프로필 사진을 눌러 스토리에 사진과 동영상을 빠르게 추가할 수 있습니다.");
+                builder.show();
+
+            }
+        });
+
 
         seeMoreBtn.setOnClickListener(new View.OnClickListener() {
             @Override

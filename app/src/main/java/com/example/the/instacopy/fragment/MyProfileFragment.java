@@ -1,7 +1,11 @@
 package com.example.the.instacopy.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,12 +17,24 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.esafirm.imagepicker.features.ImagePicker;
+import com.esafirm.imagepicker.model.Image;
 import com.example.the.instacopy.MyProfileOptionActivity;
 import com.example.the.instacopy.R;
 import com.example.the.instacopy.adapter.NewsfeedAdapter;
 import com.example.the.instacopy.adapter.PhotoAdapter;
+import com.example.the.instacopy.utils.ContextUtil;
 import com.example.the.instacopy.utils.GlobalData;
+import com.example.the.instacopy.utils.ServerUtil;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONStringer;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -29,6 +45,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class MyProfileFragment extends Fragment {
     PhotoAdapter mPhotoAdapter;
     NewsfeedAdapter mNewsfeedAdapter;
+    private int REQUEST_CODE_PICKER = 1;
 
     private de.hdodenhof.circleimageview.CircleImageView profileimage;
     private android.widget.GridView photoGridView;
@@ -105,6 +122,46 @@ public class MyProfileFragment extends Fragment {
                 photoViewFragment.setVisibility(View.VISIBLE);
             }
         });
+
+        profileimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setType("Image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(intent, REQUEST_CODE_PICKER);
+//                ImagePicker.create(getActivity()).single().start(REQUEST_CODE_PICKER);
+            }
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE_PICKER) {
+            if (resultCode == Activity.RESULT_OK) {
+//                ArrayList<Image> images = (ArrayList<Image>) ImagePicker.getImages(data);
+                Uri uri = data.getData();
+                try {
+                    final Bitmap myBitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
+
+                    ServerUtil.updateProfilePhoto(getActivity(), ContextUtil.getLoginUser(getActivity()).getId() +"", myBitmap, new ServerUtil.JsonResponseHandler() {
+                        @Override
+                        public void onResponse(JSONObject json) {
+                            profileimage.setImageBitmap(myBitmap);
+                            try {
+                                Toast.makeText(getActivity(), json.getString("message"), Toast.LENGTH_SHORT).show();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     private void setValues() {

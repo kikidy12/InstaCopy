@@ -93,6 +93,8 @@ public class SearchFragment extends Fragment {
                 photoGridView2.setVisibility(View.GONE);
                 tourLayout.setVisibility(View.VISIBLE);
                 searchLayout.setVisibility(View.GONE);
+                newsfeedListView.smoothScrollToPosition(position);
+
             }
         });
 

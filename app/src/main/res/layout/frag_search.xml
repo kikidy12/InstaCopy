@@ -53,7 +53,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="5dp"
-            android:src="@drawable/search_icon" />
+            android:src="@drawable/ic_arrow_back_black_24dp" />
 
         <TextView
             android:textColor="@color/black"

@@ -16,22 +16,20 @@ public class NotificationData implements Serializable {
 
     //    고유 속성.
     private int notificationId; // 몇번째 Noti인지 DB와의 연동을 고려하는 변수.
-    private Calendar createdAt; //언제 발생한 알림인지.
-    private String actionType; // 좋아요, 댓글 구별
+    private String type; // 좋아요, 댓글 구별
 //    like : 좋아요, reply : 댓글
 
-
-    // 관계
-
+    User wirter;
+    NewsfeedData newsfeed;
 
     public NotificationData() {
     }
 
-    public NotificationData(int notificationId, Calendar createdAt, String actionType) {
+    public NotificationData(int notificationId, String type, User wirter, NewsfeedData newsfeed) {
         this.notificationId = notificationId;
-        this.createdAt = createdAt;
-        this.actionType = actionType;
-
+        this.type = type;
+        this.wirter = wirter;
+        this.newsfeed = newsfeed;
     }
 
     public int getNotificationId() {
@@ -42,21 +40,27 @@ public class NotificationData implements Serializable {
         this.notificationId = notificationId;
     }
 
-    public Calendar getCreatedAt() {
-        return createdAt;
+    public String getType() {
+        return type;
     }
 
-    public void setCreatedAt(Calendar createdAt) {
-        this.createdAt = createdAt;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public String getActionType() {
-        return actionType;
+    public User getWirter() {
+        return wirter;
     }
 
-    public void setActionType(String actionType) {
-        this.actionType = actionType;
+    public void setWirter(User wirter) {
+        this.wirter = wirter;
     }
 
+    public NewsfeedData getNewsfeed() {
+        return newsfeed;
+    }
 
+    public void setNewsfeed(NewsfeedData newsfeed) {
+        this.newsfeed = newsfeed;
+    }
 }

@@ -62,7 +62,7 @@
             android:src="@drawable/empty_heart"/>
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/replyImg"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginLeft="10dp"

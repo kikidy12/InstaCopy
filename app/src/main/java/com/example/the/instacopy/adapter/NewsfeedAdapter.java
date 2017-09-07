@@ -3,6 +3,8 @@ package com.example.the.instacopy.adapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.annotation.IntegerRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.transition.Visibility;
@@ -14,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.the.instacopy.R;
+import com.example.the.instacopy.ReplyActivity;
 import com.example.the.instacopy.data.NewsfeedData;
 
 import java.util.List;
@@ -47,6 +50,7 @@ public class NewsfeedAdapter extends ArrayAdapter<NewsfeedData> {
             row = inf.inflate(R.layout.newsfeed_list_item, null);
         }
 
+        ImageView replyImg = (ImageView) row.findViewById(R.id.replyImg);
         ImageView seeMoreBtn = (ImageView) row.findViewById(R.id.seeMoreBtn);
         final ImageView heartImg = (ImageView) row.findViewById(R.id.heartImg);
         seeMoreBtn.setOnClickListener(new View.OnClickListener() {
@@ -76,8 +80,19 @@ public class NewsfeedAdapter extends ArrayAdapter<NewsfeedData> {
                 }
             }
         });
+        replyImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, ReplyActivity.class);
+                mContext.startActivity(intent);
+            }
+        });
 
         return row;
     }
 
+    @Override
+    public int getCount() {
+        return 15;
+    }
 }

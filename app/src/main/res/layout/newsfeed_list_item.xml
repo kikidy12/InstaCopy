@@ -55,6 +55,7 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/heartImg"
             android:layout_marginLeft="5dp"
             android:layout_width="24dp"
             android:layout_height="24dp"

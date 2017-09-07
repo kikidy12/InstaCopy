@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.the.instacopy.R;
 import com.example.the.instacopy.adapter.NewsfeedAdapter;
 import com.example.the.instacopy.adapter.PhotoAdapter;
+import com.example.the.instacopy.data.User;
 import com.example.the.instacopy.utils.GlobalData;
 
 import de.hdodenhof.circleimageview.CircleImageView;

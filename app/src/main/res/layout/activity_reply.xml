@@ -37,16 +37,17 @@
         <ListView
             android:id="@+id/replyListView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
         </ListView>
 
     <LinearLayout
-        android:gravity="center_vertical"
-        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <ImageView
             android:layout_width="30dp"
@@ -54,17 +55,15 @@
             android:src="@mipmap/ic_launcher" />
 
         <EditText
-            android:layout_marginLeft="10dp"
-            android:layout_width="wrap_content"
+            android:id="@+id/commentEdt"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
             android:hint="댓글 달기" />
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-
-        <TextView
+            android:id="@+id/okBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="남기기" />

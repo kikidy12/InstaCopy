@@ -36,6 +36,7 @@ public class MyProfileFragment extends Fragment {
     private android.widget.TextView idTxt;
     private android.widget.TextView nameTxt;
     private android.widget.LinearLayout photoViewFragment;
+    private ImageView seeMoreBtn;
 
     @Nullable
     @Override
@@ -49,6 +50,7 @@ public class MyProfileFragment extends Fragment {
         this.photoView = (ImageView) v.findViewById(R.id.photoView);
         this.photoGridView = (GridView) v.findViewById(R.id.photoGridView);
         this.profileimage = (CircleImageView) v.findViewById(R.id.profile_image);
+        this.seeMoreBtn = (ImageView) v.findViewById(R.id.seeMoreBtn);
 
         return v;
     }
@@ -56,7 +58,6 @@ public class MyProfileFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         setValues();
         setupEvents();
     }

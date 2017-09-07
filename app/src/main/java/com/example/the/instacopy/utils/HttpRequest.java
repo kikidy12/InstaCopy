@@ -1,4 +1,4 @@
-package kr.co.tjeit.lecturemanager.util;
+package com.example.the.instacopy.utils;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

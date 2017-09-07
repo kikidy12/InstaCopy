@@ -126,42 +126,8 @@ public class MyProfileFragment extends Fragment {
         profileimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setType("Image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(intent, REQUEST_CODE_PICKER);
-//                ImagePicker.create(getActivity()).single().start(REQUEST_CODE_PICKER);
             }
         });
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQUEST_CODE_PICKER) {
-            if (resultCode == Activity.RESULT_OK) {
-//                ArrayList<Image> images = (ArrayList<Image>) ImagePicker.getImages(data);
-                Uri uri = data.getData();
-                try {
-                    final Bitmap myBitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
-
-                    ServerUtil.updateProfilePhoto(getActivity(), ContextUtil.getLoginUser(getActivity()).getId() +"", myBitmap, new ServerUtil.JsonResponseHandler() {
-                        @Override
-                        public void onResponse(JSONObject json) {
-                            profileimage.setImageBitmap(myBitmap);
-                            try {
-                                Toast.makeText(getActivity(), json.getString("message"), Toast.LENGTH_SHORT).show();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
     }
 
     private void setValues() {
@@ -169,6 +135,9 @@ public class MyProfileFragment extends Fragment {
         photoGridView.setAdapter(mPhotoAdapter);
         mNewsfeedAdapter = new NewsfeedAdapter(getActivity(), GlobalData.newsfeedDatas);
         newsfeedListView.setAdapter(mNewsfeedAdapter);
+
+        idTxt.setText(ContextUtil.getLoginUser(getActivity()).getUserId());
+        nameTxt.setText(ContextUtil.getLoginUser(getActivity()).getName());
     }
 
     public void hidePhoto() {

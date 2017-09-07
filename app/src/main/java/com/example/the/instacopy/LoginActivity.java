@@ -79,8 +79,9 @@ public class LoginActivity extends BaseActivity {
                     public void onResponse(JSONObject json) {
                         try {
                             if (json.getBoolean("result")) {
-                                User temp = User.getUserFromJsonObject(json);
-                                Toast.makeText(mContext, json.getJSONObject("user").getString("id"), Toast.LENGTH_SHORT).show();
+                                User temp = User.getUserFromJsonObject(json.getJSONObject("user"));
+                                ContextUtil.login(mContext, temp);
+                                Toast.makeText(mContext, temp.getName(), Toast.LENGTH_SHORT).show();
 
                                 Intent intent = new Intent(mContext, MainActivity.class);
                                 startActivity(intent);

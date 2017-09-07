@@ -1,13 +1,11 @@
-package kr.co.tjeit.lecturemanager.util;
+package com.example.the.instacopy.utils;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,7 +16,7 @@ import java.util.Map;
 public class ServerUtil {
 
     private static final String TAG = ServerUtil.class.getSimpleName();
-    private final static String BASE_URL = "http://13.124.238.13/"; // 라이브서버
+    private final static String BASE_URL = "http://13.124.211.183/"; // 라이브서버
 //    private final static String BASE_URL = "http://share-tdd.com/"; // 개발서버
 
     public interface JsonResponseHandler {
@@ -70,21 +68,14 @@ public class ServerUtil {
     }
 
     // 회원 가입 기능
-    public static void sign_up(final Context context, final String id,
-                               final String pw,
-                               final String name,
-                               final String profilePhoto,
-                               final String phoneNum,
-                               final JsonResponseHandler handler) {
-        String url = BASE_URL+"mobile/sign_up";
+    public static void sign_up(final Context context, final String id, final String pw, final String name, final JsonResponseHandler handler) {
+        String url = BASE_URL+"insta/sign_up";
         //		String registrationId = ContextUtil.getRegistrationId(context);
 
         Map<String, String> data = new HashMap<String, String>();
-        data.put("user_id", id);
+        data.put("userId", id);
         data.put("password", pw);
         data.put("name", name);
-        data.put("profile_photo", profilePhoto);
-        data.put("phone_num", phoneNum);
 
         AsyncHttpRequest.post(context, url,  data, true, new AsyncHttpRequest.HttpResponseHandler() {
 
@@ -173,11 +164,11 @@ public class ServerUtil {
 
     // 로그인 기능
     public static void sign_in(final Context context, String id, String pw, final JsonResponseHandler handler) {
-        String url = BASE_URL+"mobile/sign_in";
+        String url = BASE_URL+"insta/sign_in";
         //		String registrationId = ContextUtil.getRegistrationId(context);
 
         Map<String, String> data = new HashMap<String, String>();
-        data.put("user_id", id);
+        data.put("userId", id);
         data.put("password", pw);
 
         AsyncHttpRequest.post(context, url,  data, true, new AsyncHttpRequest.HttpResponseHandler() {

@@ -10,10 +10,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.the.instacopy.data.User;
 import com.example.the.instacopy.utils.ContextUtil;
+import com.example.the.instacopy.utils.ServerUtil;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -21,6 +23,9 @@ import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -34,6 +39,7 @@ public class LoginActivity extends BaseActivity {
     private com.facebook.login.widget.LoginButton fbloginBtn;
     private EditText idEdt;
     private EditText pwEdt;
+    private android.widget.TextView signUpBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,15 +74,35 @@ public class LoginActivity extends BaseActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                UserData myData = new UserData(542, "아이유", "iu", "아이유사진경로");
-//
-//                // ContextUtil을 이용해서 저장.
-//                ContextUtil.setLoginUser(mContext, myData);
+                ServerUtil.sign_in(mContext, idEdt.getText().toString(), pwEdt.getText().toString(), new ServerUtil.JsonResponseHandler() {
+                    @Override
+                    public void onResponse(JSONObject json) {
+                        try {
+                            if (json.getBoolean("result")) {
+                                User temp = User.getUserFromJsonObject(json);
+                                Toast.makeText(mContext, json.getJSONObject("user").getString("id"), Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(mContext, MainActivity.class);
+                                Intent intent = new Intent(mContext, MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+
+
+            }
+        });
+
+        signUpBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, SignUpActivity.class);
                 startActivity(intent);
                 finish();
-
             }
         });
 
@@ -147,10 +173,11 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void bindViews() {
-        this.pwEdt = (EditText) findViewById(R.id.pwEdt);
-        this.idEdt = (EditText) findViewById(R.id.idEdt);
+        this.signUpBtn = (TextView) findViewById(R.id.signUpBtn);
         this.fbloginBtn = (LoginButton) findViewById(R.id.fb_loginBtn);
         this.loginBtn = (Button) findViewById(R.id.loginBtn);
+        this.pwEdt = (EditText) findViewById(R.id.pwEdt);
+        this.idEdt = (EditText) findViewById(R.id.idEdt);
 
     }
 }

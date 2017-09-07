@@ -14,11 +14,12 @@
        android:layout_height="wrap_content">
 
        <ImageView
+           android:id="@+id/backBtn"
            android:padding="5dp"
            android:layout_width="40dp"
            android:src="@mipmap/ic_launcher_round"
            android:layout_height="40dp" />
-       '
+
        <TextView
            android:textColor="#000000"
            android:textSize="17sp"
@@ -357,6 +358,5 @@
         </LinearLayout>
 
     </ScrollView>
-
 
 </LinearLayout>

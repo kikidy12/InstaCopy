@@ -44,8 +44,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".ReplyActivity" />
-        <activity android:name=".MyProfileOptionActivity"></activity>
-        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".MyProfileOptionActivity" />
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".AddNewsfeedActivity"></activity>
+        <activity android:name=".ProfileSettingActivity"></activity>
     </application>
 
 </manifest>

@@ -13,13 +13,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.the.instacopy.R;
 import com.example.the.instacopy.ReplyActivity;
 import com.example.the.instacopy.data.NewsfeedData;
+import com.example.the.instacopy.utils.GlobalData;
 
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by the on 2017-09-05.
@@ -50,9 +53,20 @@ public class NewsfeedAdapter extends ArrayAdapter<NewsfeedData> {
             row = inf.inflate(R.layout.newsfeed_list_item, null);
         }
 
+        NewsfeedData data = mList.get(position);
+
         ImageView replyImg = (ImageView) row.findViewById(R.id.replyImg);
         ImageView seeMoreBtn = (ImageView) row.findViewById(R.id.seeMoreBtn);
+        TextView idTxt = (TextView) row.findViewById(R.id.idTxt);
+        TextView IDTxt = (TextView) row.findViewById(R.id.IDTxt);
+        TextView likeCountTxt = (TextView) row.findViewById(R.id.likeCountTxt);
         final ImageView heartImg = (ImageView) row.findViewById(R.id.heartImg);
+
+        idTxt.setText(data.getWriter().getName());
+        IDTxt.setText(data.getWriter().getName());
+        String likeStr = String.format(Locale.KOREA, "%d개", data.getLikeCount());
+        likeCountTxt.setText(likeStr);
+
         seeMoreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

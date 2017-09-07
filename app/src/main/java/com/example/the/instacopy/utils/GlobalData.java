@@ -38,7 +38,6 @@ public class GlobalData {
         photoDatas.add(new NewsfeedData(4, "마마마", 1, users.get(2)));
         photoDatas.add(new NewsfeedData(5, "바바바", 1, users.get(3)));
 
-
         newsfeedDatas.add(new NewsfeedData(0, "가가가", 1, users.get(0)));
         newsfeedDatas.add(new NewsfeedData(1, "나나나", 1, users.get(0)));
         newsfeedDatas.add(new NewsfeedData(2, "다다다", 1, users.get(1)));

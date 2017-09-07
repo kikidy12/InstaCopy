@@ -29,6 +29,7 @@ public class ContextUtil {
 
         loginUser = null;
 
+
     }
 
     public static void login(Context context, User loginUser) {

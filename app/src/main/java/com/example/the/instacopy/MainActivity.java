@@ -1,5 +1,6 @@
 package com.example.the.instacopy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -18,6 +19,7 @@ public class MainActivity extends BaseActivity {
     private android.widget.FrameLayout searchFragment;
     private android.widget.FrameLayout likeFragment;
     private android.widget.FrameLayout myProfileFragment;
+    private ImageView contentBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,14 @@ public class MainActivity extends BaseActivity {
             }
         });
 
+        contentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, AddNewsfeedActivity.class);
+                startActivity(intent);
+            }
+        });
+
         likeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,6 +107,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void bindViews() {
+        this.contentBtn = (ImageView) findViewById(R.id.contentBtn);
         this.myProfileBtn = (ImageView) findViewById(R.id.myProfileBtn);
         this.likeBtn = (ImageView) findViewById(R.id.likeBtn);
         this.searchBtn = (ImageView) findViewById(R.id.searchBtn);

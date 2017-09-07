@@ -1,5 +1,6 @@
 package com.example.the.instacopy.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.the.instacopy.MyProfileOptionActivity;
 import com.example.the.instacopy.R;
 import com.example.the.instacopy.adapter.NewsfeedAdapter;
 import com.example.the.instacopy.adapter.PhotoAdapter;
@@ -64,6 +66,15 @@ public class MyProfileFragment extends Fragment {
     }
 
     private void setupEvents() {
+
+        seeMoreBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MyProfileOptionActivity.class);
+                startActivity(intent);
+            }
+        });
+
         photoView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

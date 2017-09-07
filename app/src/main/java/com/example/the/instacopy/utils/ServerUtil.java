@@ -428,12 +428,12 @@ public class ServerUtil {
         });
     }
 
-    public static void updateProfilePhoto(final Context context, String user_id, Bitmap bitmap, final JsonResponseHandler handler) {
+    public static void updateProfilePhoto(final Context context, int user_id, Bitmap bitmap, final JsonResponseHandler handler) {
         String url = BASE_URL+"insta/make_post";
         //		String registrationId = ContextUtil.getRegistrationId(context);
 
         Map<String, String> data = new HashMap<String, String>();
-        data.put("user_id", user_id);
+        data.put("user_id", user_id+"");
 
         AsyncHttpRequest.postWithImageFile(context, url, data, bitmap, "profile", new AsyncHttpRequest.HttpResponseHandler() {
 

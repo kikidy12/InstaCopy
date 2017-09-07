@@ -14,6 +14,7 @@
        android:layout_height="wrap_content">
 
        <ImageView
+           android:id="@+id/backBtn"
            android:padding="5dp"
            android:layout_width="40dp"
            android:src="@mipmap/ic_launcher_round"
@@ -357,6 +358,5 @@
         </LinearLayout>
 
     </ScrollView>
-
 
 </LinearLayout>

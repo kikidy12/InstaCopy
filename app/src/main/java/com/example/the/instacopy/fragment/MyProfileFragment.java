@@ -135,35 +135,6 @@ public class MyProfileFragment extends Fragment {
         });
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQUEST_CODE_PICKER) {
-            if (resultCode == Activity.RESULT_OK) {
-//                ArrayList<Image> images = (ArrayList<Image>) ImagePicker.getImages(data);
-                Uri uri = data.getData();
-                try {
-                    final Bitmap myBitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
-
-                    ServerUtil.updateProfilePhoto(getActivity(), ContextUtil.getLoginUser(getActivity()).getId() +"", myBitmap, new ServerUtil.JsonResponseHandler() {
-                        @Override
-                        public void onResponse(JSONObject json) {
-                            profileimage.setImageBitmap(myBitmap);
-                            try {
-                                Toast.makeText(getActivity(), json.getString("message"), Toast.LENGTH_SHORT).show();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
     private void setValues() {
         mPhotoAdapter = new PhotoAdapter(getActivity(), GlobalData.photoDatas);
         photoGridView.setAdapter(mPhotoAdapter);

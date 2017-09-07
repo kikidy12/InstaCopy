@@ -5,13 +5,19 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.the.instacopy.fragment.MyProfileFragment;
+
+import java.util.zip.Inflater;
 
 public class MyProfileOptionActivity extends BaseActivity {
 
     private android.widget.TextView textView;
     private android.widget.TextView idPlusTxt;
     private android.widget.TextView LogoutTxt;
+    private android.widget.ImageView backBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +31,13 @@ public class MyProfileOptionActivity extends BaseActivity {
 
     @Override
     public void setupEvents() {
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         LogoutTxt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,5 +86,6 @@ public class MyProfileOptionActivity extends BaseActivity {
     public void bindViews() {
         this.LogoutTxt = (TextView) findViewById(R.id.LogoutTxt);
         this.idPlusTxt = (TextView) findViewById(R.id.idPlusTxt);
+        this.backBtn = (ImageView) findViewById(R.id.backBtn);
     }
 }

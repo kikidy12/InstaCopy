@@ -52,6 +52,7 @@
         android:background="#a0a0a0"/>
 
     <EditText
+        android:id="@+id/contentEdt"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:hint="문구 입력..."/>

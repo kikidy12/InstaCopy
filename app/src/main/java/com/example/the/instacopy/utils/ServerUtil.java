@@ -428,14 +428,55 @@ public class ServerUtil {
         });
     }
 
-    public static void updateProfilePhoto(final Context context, int user_id, Bitmap bitmap, final JsonResponseHandler handler) {
-        String url = BASE_URL+"insta/make_post";
+
+
+    public static void updateProfilePhoto(final Context context, int user_id, Bitmap bitmap, String content, final JsonResponseHandler handler) {
+        String url = BASE_URL+"insta/make_newsfeed";
         //		String registrationId = ContextUtil.getRegistrationId(context);
 
         Map<String, String> data = new HashMap<String, String>();
         data.put("user_id", user_id+"");
+        data.put("content", content);
 
         AsyncHttpRequest.postWithImageFile(context, url, data, bitmap, "profile", new AsyncHttpRequest.HttpResponseHandler() {
+
+            @Override
+            public boolean onPrepare() {
+                return true;
+            }
+
+            @Override
+            public void onResponse(String response) {
+                System.out.println(response);
+                try {
+                    JSONObject json = new JSONObject(response);
+
+                    if (handler != null)
+                        handler.onResponse(json);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onCancelled() {
+
+            }
+
+        });
+    }
+
+    public static void get_all_newfeeds(final Context context, final JsonResponseHandler handler) {
+        String url = BASE_URL+"insta/get_all_newfeeds";
+        //		String registrationId = ContextUtil.getRegistrationId(context);
+
+        Map<String, String> data = new HashMap<String, String>();
+
+        AsyncHttpRequest.post(context, url,  data, true, new AsyncHttpRequest.HttpResponseHandler() {
 
             @Override
             public boolean onPrepare() {

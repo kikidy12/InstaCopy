@@ -15,6 +15,7 @@ public class NewsfeedData implements Serializable {
 
     private int newsfeedId;
     private String imageURL;
+    private String content;
     private int likeCount; // 좋아요 개수
 
     private User writer;
@@ -38,11 +39,27 @@ public class NewsfeedData implements Serializable {
 
     }
 
+    public NewsfeedData(int newsfeedId, String imageURL, String content, int likeCount, User writer) {
+        this.newsfeedId = newsfeedId;
+        this.imageURL = imageURL;
+        this.content = content;
+        this.likeCount = likeCount;
+        this.writer = writer;
+    }
+
     public NewsfeedData(int newsfeedId, String imageURL, int likeCount, User writer) {
         this.newsfeedId = newsfeedId;
         this.imageURL = imageURL;
         this.likeCount = likeCount;
         this.writer = writer;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public int getNewsfeedId() {

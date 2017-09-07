@@ -53,7 +53,6 @@ public class ProfileSettingActivity extends BaseActivity {
 
             }
         });
-
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,12 +60,24 @@ public class ProfileSettingActivity extends BaseActivity {
             }
         });
 
+        idEdt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                idEdt.setText("");
+            }
+        });
+        nameEdt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nameEdt.setText("");
+            }
+        });
     }
 
     @Override
     public void setValues() {
-
-
+        idEdt.setText(ContextUtil.getLoginUser(mContext).getUserId());
+        nameEdt.setText(ContextUtil.getLoginUser(mContext).getName());
     }
 
     @Override

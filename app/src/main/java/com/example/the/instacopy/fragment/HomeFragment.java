@@ -17,10 +17,13 @@ import android.widget.Toast;
 
 import com.example.the.instacopy.R;
 import com.example.the.instacopy.adapter.NewsfeedAdapter;
+import com.example.the.instacopy.data.NewsfeedData;
 import com.example.the.instacopy.utils.ContextUtil;
 import com.example.the.instacopy.utils.GlobalData;
 import com.example.the.instacopy.utils.ServerUtil;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -61,7 +64,6 @@ public class HomeFragment extends Fragment {
     private void setValues() {
         mHomeAdapter = new NewsfeedAdapter(getActivity(), GlobalData.newsfeedDatas);
         homeListView.setAdapter(mHomeAdapter);
-
     }
 
 }

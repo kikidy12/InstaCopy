@@ -5,11 +5,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.transition.Visibility;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.the.instacopy.R;
 import com.example.the.instacopy.data.NewsfeedData;
@@ -26,6 +28,7 @@ public class NewsfeedAdapter extends ArrayAdapter<NewsfeedData> {
     List<NewsfeedData> mList;
     LayoutInflater inf;
     String[] seemore = {"보관","공유하기","수정","삭제","댓글기능해제","공유URL복사"};
+    boolean isheart = false;
 
     public NewsfeedAdapter(Context context, List<NewsfeedData> list) {
         super(context, R.layout.newsfeed_list_item, list);
@@ -45,6 +48,7 @@ public class NewsfeedAdapter extends ArrayAdapter<NewsfeedData> {
         }
 
         ImageView seeMoreBtn = (ImageView) row.findViewById(R.id.seeMoreBtn);
+        final ImageView heartImg = (ImageView) row.findViewById(R.id.heartImg);
         seeMoreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,6 +59,21 @@ public class NewsfeedAdapter extends ArrayAdapter<NewsfeedData> {
 
                     }
                 }).show();
+            }
+        });
+
+        heartImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!isheart) {
+                    heartImg.setImageResource(R.drawable.heart_black);
+                    Toast.makeText(mContext, "좋아요를 눌렀습니다.", Toast.LENGTH_SHORT).show();
+                    isheart=true;
+                }
+                else {
+                    heartImg.setImageResource(R.drawable.empty_heart);
+                    isheart=false;
+                }
             }
         });
 

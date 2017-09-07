@@ -1,6 +1,8 @@
 package com.example.the.instacopy;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class MyProfileOptionActivity extends BaseActivity {
@@ -21,6 +23,27 @@ public class MyProfileOptionActivity extends BaseActivity {
 
     @Override
     public void setupEvents() {
+
+        LogoutTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        //                계정추가 버튼 누를 시 적용되는 이벤트
+
+        idPlusTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
     }
 

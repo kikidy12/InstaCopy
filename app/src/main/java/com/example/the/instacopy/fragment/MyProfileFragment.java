@@ -36,19 +36,21 @@ public class MyProfileFragment extends Fragment {
     private android.widget.TextView idTxt;
     private android.widget.TextView nameTxt;
     private android.widget.LinearLayout photoViewFragment;
+    private ImageView seeMoreBtn;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_my_profile, container, false);
-        this.photoViewFragment = (LinearLayout) v.findViewById(R.id.photoViewFragment);
-        this.nameTxt = (TextView) v.findViewById(R.id.nameTxt);
-        this.idTxt = (TextView) v.findViewById(R.id.idTxt);
         this.newsfeedListView = (ListView) v.findViewById(R.id.newsfeedListView);
+        this.photoGridView = (GridView) v.findViewById(R.id.photoGridView);
         this.newsfeedView = (ImageView) v.findViewById(R.id.newsfeedView);
         this.photoView = (ImageView) v.findViewById(R.id.photoView);
-        this.photoGridView = (GridView) v.findViewById(R.id.photoGridView);
+        this.nameTxt = (TextView) v.findViewById(R.id.nameTxt);
         this.profileimage = (CircleImageView) v.findViewById(R.id.profile_image);
+        this.seeMoreBtn = (ImageView) v.findViewById(R.id.seeMoreBtn);
+        this.idTxt = (TextView) v.findViewById(R.id.idTxt);
+        this.photoViewFragment = (LinearLayout) v.findViewById(R.id.photoViewFragment);
 
         return v;
     }

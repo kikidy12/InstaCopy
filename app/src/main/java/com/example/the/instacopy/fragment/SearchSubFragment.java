@@ -77,6 +77,7 @@ public class SearchSubFragment extends Fragment {
                     tagTxt.setTextColor(Color.parseColor("#a0a0a0"));
                     underLine4.setVisibility(View.GONE);
                     placeTxt.setTextColor(Color.parseColor("#a0a0a0"));
+                    ((SearchFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.search)).setsearchTxt("검색");
                 } else if (position == 1) {
                     underLine1.setVisibility(View.GONE);
                     populTxt.setTextColor(Color.parseColor("#a0a0a0"));
@@ -86,6 +87,7 @@ public class SearchSubFragment extends Fragment {
                     tagTxt.setTextColor(Color.parseColor("#a0a0a0"));
                     underLine4.setVisibility(View.GONE);
                     placeTxt.setTextColor(Color.parseColor("#a0a0a0"));
+                    ((SearchFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.search)).setsearchTxt("사람 검색");
                 } else if (position == 2) {
                     underLine1.setVisibility(View.GONE);
                     populTxt.setTextColor(Color.parseColor("#a0a0a0"));
@@ -95,6 +97,7 @@ public class SearchSubFragment extends Fragment {
                     tagTxt.setTextColor(Color.parseColor("#000000"));
                     underLine4.setVisibility(View.GONE);
                     placeTxt.setTextColor(Color.parseColor("#a0a0a0"));
+                    ((SearchFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.search)).setsearchTxt("태그 검색");
                 } else {
                     underLine1.setVisibility(View.GONE);
                     populTxt.setTextColor(Color.parseColor("#a0a0a0"));
@@ -104,6 +107,7 @@ public class SearchSubFragment extends Fragment {
                     tagTxt.setTextColor(Color.parseColor("#a0a0a0"));
                     underLine4.setVisibility(View.VISIBLE);
                     placeTxt.setTextColor(Color.parseColor("#000000"));
+                    ((SearchFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.search)).setsearchTxt("장소 검색");
                 }
             }
 
@@ -117,6 +121,7 @@ public class SearchSubFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 searchPager.setCurrentItem(0);
+
             }
         });
 

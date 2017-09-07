@@ -114,4 +114,8 @@ public class SearchFragment extends Fragment {
         photoGridView2.setAdapter(mPhotoAdapter);
         newsfeedListView.setAdapter(mNewsAdapet);
     }
+    public void setsearchTxt(String str) {
+        searchEdt.setHint(str);
+    }
+
 }

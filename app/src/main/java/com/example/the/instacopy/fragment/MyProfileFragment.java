@@ -1,5 +1,6 @@
 package com.example.the.instacopy.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.the.instacopy.MyProfileOptionActivity;
 import com.example.the.instacopy.R;
 import com.example.the.instacopy.adapter.NewsfeedAdapter;
 import com.example.the.instacopy.adapter.PhotoAdapter;
@@ -47,11 +49,12 @@ public class MyProfileFragment extends Fragment {
         this.nameTxt = (TextView) v.findViewById(R.id.nameTxt);
         this.idTxt = (TextView) v.findViewById(R.id.idTxt);
         this.newsfeedListView = (ListView) v.findViewById(R.id.newsfeedListView);
+        this.photoGridView = (GridView) v.findViewById(R.id.photoGridView);
         this.newsfeedView = (ImageView) v.findViewById(R.id.newsfeedView);
         this.photoView = (ImageView) v.findViewById(R.id.photoView);
-        this.photoGridView = (GridView) v.findViewById(R.id.photoGridView);
         this.profileimage = (CircleImageView) v.findViewById(R.id.profile_image);
         this.seeMoreBtn = (ImageView) v.findViewById(R.id.seeMoreBtn);
+
 
         return v;
     }
@@ -59,11 +62,21 @@ public class MyProfileFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         setValues();
         setupEvents();
     }
 
     private void setupEvents() {
+
+        seeMoreBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MyProfileOptionActivity.class);
+                startActivity(intent);
+            }
+        });
+
         photoView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

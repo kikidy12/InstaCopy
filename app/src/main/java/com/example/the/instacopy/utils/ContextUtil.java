@@ -19,6 +19,8 @@ public class ContextUtil {
     private final static String USER_NAME = "USE_NAME";
     private final static String USER_PROFILE_URL = "USER_PROFILE_URL";
 
+
+
     public static void logout(Context context) {
         SharedPreferences pref = context.getSharedPreferences(prefName, Context.MODE_PRIVATE);
 

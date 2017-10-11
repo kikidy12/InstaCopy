@@ -25,7 +25,7 @@ public class NewsfeedData implements Serializable {
 
         try {
             tempNews.setNewsfeedId(json.getInt("id"));
-            tempNews.setImageURL(json.getString("profile_url"));
+            tempNews.setImageURL(json.getString("image_resource"));
 
             tempNews.setWriter(User.getUserFromJsonObject(json.getJSONObject("user")));
         } catch (JSONException e) {

@@ -60,10 +60,11 @@ public class NewsfeedAdapter extends ArrayAdapter<NewsfeedData> {
         TextView idTxt = (TextView) row.findViewById(R.id.idTxt);
         TextView IDTxt = (TextView) row.findViewById(R.id.IDTxt);
         TextView likeCountTxt = (TextView) row.findViewById(R.id.likeCountTxt);
+        TextView contentTxt = (TextView)row.findViewById(R.id.contentTxt);
         final ImageView heartImg = (ImageView) row.findViewById(R.id.heartImg);
 
         idTxt.setText(data.getWriter().getName());
-        IDTxt.setText(data.getWriter().getName());
+        IDTxt.setText(data.getWriter().getUserId());
         String likeStr = String.format(Locale.KOREA, "%d개", data.getLikeCount());
         likeCountTxt.setText(likeStr);
 

@@ -1,6 +1,9 @@
 package com.example.the.instacopy;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -15,15 +18,17 @@ import org.json.JSONObject;
 
 public class AddNewsfeedActivity extends BaseActivity {
 
+    Bitmap bitmap;
+
     private android.widget.ImageView backImg;
     private android.widget.TextView contentBtn;
     private android.widget.EditText contentEdt;
+    private ImageView newsImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_newsfeed);
-
         bindViews();
         setupEvents();
         setValues();
@@ -32,14 +37,15 @@ public class AddNewsfeedActivity extends BaseActivity {
     @Override
     public void setupEvents() {
 
+        // 서버에 게시물을 공유
         contentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ServerUtil.updateProfilePhoto(mContext, ContextUtil.getLoginUser(mContext).getId(), null, contentEdt.getText().toString(), new ServerUtil.JsonResponseHandler() {
+                ServerUtil.updateProfilePhoto(mContext, ContextUtil.getLoginUser(mContext).getId(), bitmap, contentEdt.getText().toString(), new ServerUtil.JsonResponseHandler() {
                     @Override
                     public void onResponse(JSONObject json) {
                         try {
-                            if(json.getBoolean("result")) {
+                            if (json.getBoolean("result")) {
                                 Toast.makeText(mContext, "성공", Toast.LENGTH_SHORT).show();
                                 contentEdt.setText("");
                             }
@@ -61,12 +67,15 @@ public class AddNewsfeedActivity extends BaseActivity {
 
     @Override
     public void setValues() {
-
+        //drawable의 이미지를 bitmap으로 변환
+        BitmapDrawable drawable = (BitmapDrawable) ContextCompat.getDrawable(mContext, R.drawable.dog1);
+        bitmap = drawable.getBitmap();
     }
 
     @Override
     public void bindViews() {
         this.contentEdt = (EditText) findViewById(R.id.contentEdt);
+        this.newsImg = (ImageView) findViewById(R.id.newsImg);
         this.contentBtn = (TextView) findViewById(R.id.contentBtn);
         this.backImg = (ImageView) findViewById(R.id.backImg);
     }

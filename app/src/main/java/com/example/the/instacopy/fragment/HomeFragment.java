@@ -27,6 +27,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by the on 2017-09-06.
@@ -36,6 +38,7 @@ public class HomeFragment extends Fragment {
 
     private android.widget.ListView homeListView;
     NewsfeedAdapter mHomeAdapter;
+    List<NewsfeedData> newsfeedDataList = new ArrayList<>();
     private android.support.v7.widget.RecyclerView listview;
     final int REQ_FOR_GALLERY=1;
 
@@ -57,12 +60,37 @@ public class HomeFragment extends Fragment {
         setupEvents();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        getNewsfeedServer();
+    }
+
+    private void getNewsfeedServer() {
+        ServerUtil.get_all_newfeeds(getActivity(), new ServerUtil.JsonResponseHandler() {
+            @Override
+            public void onResponse(JSONObject json) {
+                try {
+                    JSONArray newsfeed = json.getJSONArray("newsfeeds");
+                    for (int i=0; i<newsfeed.length(); i++) {
+                        newsfeedDataList.add(NewsfeedData.getNewsfeedFromJsonObject(newsfeed.getJSONObject(i)));
+                    }
+                    mHomeAdapter.notifyDataSetChanged();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+    }
+
     private void setupEvents() {
 
     }
 
     private void setValues() {
-        mHomeAdapter = new NewsfeedAdapter(getActivity(), GlobalData.newsfeedDatas);
+        mHomeAdapter = new NewsfeedAdapter(getActivity(), newsfeedDataList);
         homeListView.setAdapter(mHomeAdapter);
     }
 

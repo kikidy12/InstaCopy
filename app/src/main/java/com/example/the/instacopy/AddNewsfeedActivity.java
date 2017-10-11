@@ -1,5 +1,6 @@
 package com.example.the.instacopy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -42,6 +43,8 @@ public class AddNewsfeedActivity extends BaseActivity {
                             if(json.getBoolean("result")) {
                                 Toast.makeText(mContext, "성공", Toast.LENGTH_SHORT).show();
                                 contentEdt.setText("");
+                                Intent intent = new Intent(mContext, MainActivity.class);
+                                startActivity(intent);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

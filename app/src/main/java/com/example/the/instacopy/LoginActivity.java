@@ -70,7 +70,6 @@ public class LoginActivity extends BaseActivity {
     @Override
     public void setupEvents() {
 
-
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,7 +84,7 @@ public class LoginActivity extends BaseActivity {
                                 if (json.getBoolean("result")) {
                                     User temp = User.getUserFromJsonObject(json.getJSONObject("user"));
                                     ContextUtil.login(mContext, temp);
-                                    Toast.makeText(mContext, temp.getName(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(mContext, temp.getName()+" 님이 로그인했습니다.", Toast.LENGTH_SHORT).show();
 
                                     Intent intent = new Intent(mContext, MainActivity.class);
                                     startActivity(intent);

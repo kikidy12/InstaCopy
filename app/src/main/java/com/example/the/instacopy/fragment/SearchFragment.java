@@ -72,6 +72,9 @@ public class SearchFragment extends Fragment {
                     backImg.setVisibility(View.VISIBLE);
                     searchImg.setVisibility(View.GONE);
                 }
+                else {
+                    searchEdt.setText("");
+                }
             }
         });
 

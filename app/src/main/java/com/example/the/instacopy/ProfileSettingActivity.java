@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.the.instacopy.utils.ContextUtil;
 
@@ -50,7 +51,8 @@ public class ProfileSettingActivity extends BaseActivity {
         okBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                finish();
+                Toast.makeText(mContext, "수정되었습니다.(기능없음)", Toast.LENGTH_SHORT).show();
             }
         });
         cancelBtn.setOnClickListener(new View.OnClickListener() {

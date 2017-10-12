@@ -62,7 +62,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         setValues();
         setupEvents();
     }
@@ -95,10 +94,9 @@ public class HomeFragment extends Fragment {
                 try {
                     mNewsfeedDataList.clear();
                     JSONArray arrays = json.getJSONArray("newsfeeds");
-                    for (int i = 0; i < arrays.length(); i++) {
+                    for (int i = arrays.length()-1; i >= 0; i--) {
                         mNewsfeedDataList.add(NewsfeedData.getNewsfeedFromJsonObject(arrays.getJSONObject(i)));
                     }
-                    Toast.makeText(getActivity(), arrays.length()+"개", Toast.LENGTH_SHORT).show();
                     mHomeAdapter.notifyDataSetChanged();
                 } catch (JSONException e) {
                     e.printStackTrace();

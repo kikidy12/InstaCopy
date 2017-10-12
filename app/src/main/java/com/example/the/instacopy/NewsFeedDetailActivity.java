@@ -118,13 +118,13 @@ public class NewsFeedDetailActivity extends BaseActivity {
             public void onResponse(JSONObject json) {
                 try {
                     if (json.getBoolean("result")) {
-                        Toast.makeText(mContext, json.getString("message"), Toast.LENGTH_SHORT).show();
+                        Log.d("좋아요", json.getString("message"));
                         heartImg.setImageResource(R.drawable.heart_black);
                         isheart=true;
                         currentLikeCount++;
                     }
                     else {
-                        Toast.makeText(mContext, json.getString("message"), Toast.LENGTH_SHORT).show();
+                        Log.d("좋아요", json.getString("message"));
                         heartImg.setImageResource(R.drawable.empty_heart);
                         isheart=false;
                         currentLikeCount--;

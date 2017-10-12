@@ -31,6 +31,8 @@
             android:visibility="gone" />
 
         <EditText
+            android:maxLines="1"
+            android:inputType="textShortMessage"
             android:id="@+id/searchEdt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

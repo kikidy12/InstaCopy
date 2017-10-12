@@ -17,17 +17,23 @@ public class NewsfeedData implements Serializable {
     private String imageURL;
     private String content;
     private int likeCount; // 좋아요 개수
+    private List<User> likeUsers = new ArrayList<>();
 
     private User writer;
-
     public static NewsfeedData getNewsfeedFromJsonObject(JSONObject json) {
         NewsfeedData tempNews = new NewsfeedData();
 
         try {
             tempNews.setNewsfeedId(json.getInt("id"));
-            tempNews.setImageURL(json.getString("image_resource"));
+            tempNews.setContent(json.getString("content"));
+            tempNews.setImageURL(json.getJSONObject("image_resource").getString("url"));
+            tempNews.setLikeCount(json.getJSONArray("like_users").length());
 
             tempNews.setWriter(User.getUserFromJsonObject(json.getJSONObject("user")));
+
+            for (int i = 0; i < json.getJSONArray("like_users").length(); i++) {
+                tempNews.likeUsers.add(User.getUserFromJsonObject(json.getJSONArray("like_users").getJSONObject(i)));
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -52,6 +58,14 @@ public class NewsfeedData implements Serializable {
         this.imageURL = imageURL;
         this.likeCount = likeCount;
         this.writer = writer;
+    }
+
+    public List<User> getLikeUsers() {
+        return likeUsers;
+    }
+
+    public void setLikeUsers(List<User> likeUsers) {
+        this.likeUsers = likeUsers;
     }
 
     public String getContent() {

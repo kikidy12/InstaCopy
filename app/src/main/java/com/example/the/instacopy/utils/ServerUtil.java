@@ -508,4 +508,43 @@ public class ServerUtil {
         });
     }
 
+    public static void like_or_unlike(final Context context, int user_id, int newsfeed_id, final JsonResponseHandler handler) {
+        String url = BASE_URL+"insta/like_or_unlike";
+        //		String registrationId = ContextUtil.getRegistrationId(context);
+
+        Map<String, String> data = new HashMap<String, String>();
+        data.put("user_id", user_id+"");
+        data.put("newsfeed_id", newsfeed_id+"");
+
+        AsyncHttpRequest.post(context, url,  data, true, new AsyncHttpRequest.HttpResponseHandler() {
+
+            @Override
+            public boolean onPrepare() {
+                return true;
+            }
+
+            @Override
+            public void onResponse(String response) {
+                System.out.println(response);
+                try {
+                    JSONObject json = new JSONObject(response);
+
+                    if (handler != null)
+                        handler.onResponse(json);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onCancelled() {
+
+            }
+
+        });
+    }
 }

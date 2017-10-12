@@ -41,19 +41,24 @@ public class AddNewsfeedActivity extends BaseActivity {
         contentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ServerUtil.updateProfilePhoto(mContext, ContextUtil.getLoginUser(mContext).getId(), bitmap, contentEdt.getText().toString(), new ServerUtil.JsonResponseHandler() {
-                    @Override
-                    public void onResponse(JSONObject json) {
-                        try {
-                            if (json.getBoolean("result")) {
-                                Toast.makeText(mContext, "성공", Toast.LENGTH_SHORT).show();
-                                contentEdt.setText("");
+                if (contentEdt.getText().toString().equals("") || bitmap == null) {
+                    Toast.makeText(mContext, "내용을 입력하세요.", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    ServerUtil.updateProfilePhoto(mContext, ContextUtil.getLoginUser(mContext).getId(), bitmap, contentEdt.getText().toString(), new ServerUtil.JsonResponseHandler() {
+                        @Override
+                        public void onResponse(JSONObject json) {
+                            try {
+                                if (json.getBoolean("result")) {
+                                    Toast.makeText(mContext, "성공", Toast.LENGTH_SHORT).show();
+                                    contentEdt.setText("");
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
-                    }
-                });
+                    });
+                }
             }
         });
 

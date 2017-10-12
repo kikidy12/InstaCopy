@@ -1,5 +1,6 @@
 package com.example.the.instacopy.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,10 +9,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.the.instacopy.NewsFeedDetailActivity;
 import com.example.the.instacopy.R;
 import com.example.the.instacopy.adapter.NewsfeedAdapter;
 import com.example.the.instacopy.data.NewsfeedData;
@@ -51,6 +54,12 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        getData();
+    }
+
+    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
@@ -65,6 +74,15 @@ public class HomeFragment extends Fragment {
             public void onRefresh() {
                 getData();
                 swipLayout.setRefreshing(false);
+            }
+        });
+
+        homeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), NewsFeedDetailActivity.class);
+                intent.putExtra("뉴스정보", mNewsfeedDataList.get(position));
+                startActivity(intent);
             }
         });
     }

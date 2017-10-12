@@ -46,7 +46,6 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
         try {
             PackageInfo info = getPackageManager().getPackageInfo(
                     "com.example.the.instacopy",
@@ -71,29 +70,34 @@ public class LoginActivity extends BaseActivity {
     @Override
     public void setupEvents() {
 
+
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ServerUtil.sign_in(mContext, idEdt.getText().toString(), pwEdt.getText().toString(), new ServerUtil.JsonResponseHandler() {
-                    @Override
-                    public void onResponse(JSONObject json) {
-                        try {
-                            if (json.getBoolean("result")) {
-                                User temp = User.getUserFromJsonObject(json.getJSONObject("user"));
-                                ContextUtil.login(mContext, temp);
-                                Toast.makeText(mContext, temp.getName(), Toast.LENGTH_SHORT).show();
+                if (idEdt.getText().toString().equals("")&&pwEdt.getText().toString().equals("")){
+                    Toast.makeText(mContext, "아이디를 비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    ServerUtil.sign_in(mContext, idEdt.getText().toString(), pwEdt.getText().toString(), new ServerUtil.JsonResponseHandler() {
+                        @Override
+                        public void onResponse(JSONObject json) {
+                            try {
+                                if (json.getBoolean("result")) {
+                                    User temp = User.getUserFromJsonObject(json.getJSONObject("user"));
+                                    ContextUtil.login(mContext, temp);
+                                    Toast.makeText(mContext, temp.getName(), Toast.LENGTH_SHORT).show();
 
-                                Intent intent = new Intent(mContext, MainActivity.class);
-                                startActivity(intent);
-                                finish();
+                                    Intent intent = new Intent(mContext, MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+
                         }
-
-                    }
-                });
-
+                    });
+                }
 
             }
         });
@@ -141,14 +145,12 @@ public class LoginActivity extends BaseActivity {
                 }
                 else {
 
-                    User temp = new User(0, currentProfile.getId(), currentProfile.getName(), currentProfile.getProfilePictureUri(200, 200).toString());
+                    User temp = new User(0, currentProfile.getId(), currentProfile.getName(), "fsdfsdf", currentProfile.getProfilePictureUri(200, 200).toString());
 
                     ContextUtil.login(mContext, temp);
 
 //                    로그인이 된 경우
                     Toast.makeText(mContext, "로그인한 사람 : " + currentProfile.getName(), Toast.LENGTH_SHORT).show();
-
-
 
 //                    로그인에 성공했으니, 메인 화면으로 넘어가게.
                     Intent intent = new Intent(mContext, MainActivity.class);
@@ -160,9 +162,6 @@ public class LoginActivity extends BaseActivity {
 
             }
         };
-
-
-
 
     }
 

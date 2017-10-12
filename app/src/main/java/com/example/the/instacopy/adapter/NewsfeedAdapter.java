@@ -74,9 +74,9 @@ public class NewsfeedAdapter extends ArrayAdapter<NewsfeedData> {
 
         idTxt.setText(data.getWriter().getName());
         IDTxt.setText(data.getWriter().getUserId());
-        String likeStr = String.format(Locale.KOREA, "%d개", data.getLikeCount());
+        String likeStr = String.format(Locale.KOREA, "%d개", data.getLikeUsers().size());
         Glide.with(mContext).load("http://13.125.2.51/" + data.getImageURL()).into(imageView);
-        likeCountTxt.setText(data.getLikeCount()+"개");
+        likeCountTxt.setText(data.getLikeUsers().size()+"개");
         contentTxt.setText(data.getContent());
 
         seeMoreBtn.setOnClickListener(new View.OnClickListener() {
@@ -94,49 +94,25 @@ public class NewsfeedAdapter extends ArrayAdapter<NewsfeedData> {
         heartImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!isheart) {
-                    ServerUtil.like_or_unlike(mContext, ContextUtil.getLoginUser(mContext).getId(), data.getNewsfeedId(), new ServerUtil.JsonResponseHandler() {
-                        @Override
-                        public void onResponse(JSONObject json) {
-                            try {
-                                if (json.getBoolean("result")) {
-                                    heartImg.setImageResource(R.drawable.heart_black);
-                                    isheart=true;
-                                    likeCountTxt.setText((data.getLikeCount()+1)+"개");
-                                }
-                                else {
-                                    heartImg.setImageResource(R.drawable.empty_heart);
-                                    isheart=false;
-                                    likeCountTxt.setText((data.getLikeCount()-1)+"개");
-                                }
 
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                ServerUtil.like_or_unlike(mContext, ContextUtil.getLoginUser(mContext).getId(), data.getNewsfeedId(), new ServerUtil.JsonResponseHandler() {
+                    @Override
+                    public void onResponse(JSONObject json) {
+                        try {
+                            if (json.getBoolean("result")) {
+                                data.getLikeUsers().add(ContextUtil.getLoginUser(mContext));
                             }
-                        }
-                    });
-                }
-                else {
-                    ServerUtil.like_or_unlike(mContext, ContextUtil.getLoginUser(mContext).getId(), data.getNewsfeedId(), new ServerUtil.JsonResponseHandler() {
-                        @Override
-                        public void onResponse(JSONObject json) {
-                            try {
-                                if (json.getBoolean("result")) {
-                                    heartImg.setImageResource(R.drawable.heart_black);
-                                    isheart=true;
-                                    likeCountTxt.setText((data.getLikeCount()+1)+"개");
-                                }
-                                else {
-                                    heartImg.setImageResource(R.drawable.empty_heart);
-                                    isheart=false;
-                                    likeCountTxt.setText((data.getLikeCount()-1)+"개");
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                            else {
+                                data.getLikeUsers().remove(ContextUtil.getLoginUser(mContext));
                             }
+
+                            notifyDataSetChanged();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-                    });
-                }
+                    }
+                });
             }
         });
         replyImg.setOnClickListener(new View.OnClickListener() {
@@ -147,24 +123,11 @@ public class NewsfeedAdapter extends ArrayAdapter<NewsfeedData> {
             }
         });
 
-        if ( data.getLikeUsers().size() == 0) {
-            heartImg.setImageResource(R.drawable.empty_heart);
-            isheart=false;
+        if (data.getLikeUsers().contains(ContextUtil.getLoginUser(mContext))) {
+            heartImg.setImageResource(R.drawable.heart_black);
         }
         else {
-            for (User like : data.getLikeUsers()) {
-                Log.d("Like", like.getId()+"");
-                Log.d("my", ContextUtil.getLoginUser(mContext).getId()+"");
-                if (like.getId() != ContextUtil.getLoginUser(mContext).getId()) {
-                    heartImg.setImageResource(R.drawable.empty_heart);
-                    isheart=false;
-                }
-                else {
-                    heartImg.setImageResource(R.drawable.heart_black);
-                    isheart=true;
-                    break;
-                }
-            }
+            heartImg.setImageResource(R.drawable.empty_heart);
         }
 
         return row;

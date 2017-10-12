@@ -1,5 +1,6 @@
 package com.example.the.instacopy;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +20,7 @@ public class SignUpActivity extends BaseActivity {
     private android.widget.EditText pwEdt;
     private android.widget.Button signUpBtn;
     private EditText nameEdt;
+    boolean isIdOk = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +35,39 @@ public class SignUpActivity extends BaseActivity {
     @Override
     public void setupEvents() {
 
+        checkDuplBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ServerUtil.check_dupl_id(mContext, idEdt.getText().toString(), new ServerUtil.JsonResponseHandler() {
+                    @Override
+                    public void onResponse(JSONObject json) {
+                        try {
+                            if (json.getBoolean("result")) {
+                                isIdOk=true;
+                                Toast.makeText(mContext, "사용해도 좋은 아이디입니다.", Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                isIdOk=false;
+                                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                                builder.setTitle("가입 불가");
+                                builder.setMessage("이미 사용중인 아이디입니다. 다시 입력하세요.");
+                                builder.setPositiveButton("확인", null);
+                                builder.show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
+        });
+
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                boolean isIdOk = !idEdt.getText().toString().equals("");
-                if (!isIdOk) {
+                boolean isIDOk = !idEdt.getText().toString().equals("");
+                if (!isIDOk) {
                     Toast.makeText(mContext, "아이디를 입력하세요.", Toast.LENGTH_SHORT).show();
                     return;
                 }

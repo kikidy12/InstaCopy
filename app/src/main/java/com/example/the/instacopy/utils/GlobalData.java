@@ -24,12 +24,5 @@ public class GlobalData {
         newsfeedDatas.clear();
         NotidataList.clear();
 
-        users.add(new User(0, "aaa", "aname", ""));
-        users.add(new User(1, "bbb", "bname", ""));
-        users.add(new User(2, "ccc", "cname", ""));
-        users.add(new User(3, "ddd", "dname", ""));
-        users.add(new User(4, "eee", "ename", ""));
-        users.add(new User(5, "fff", "fname", ""));
-
     }
 }

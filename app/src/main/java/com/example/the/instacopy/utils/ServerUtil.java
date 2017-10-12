@@ -29,11 +29,11 @@ public class ServerUtil {
 
     // 회원 가입시 아이디 중복 체크
     public static void check_dupl_id(final Context context, final String id, final JsonResponseHandler handler) {
-        String url = BASE_URL+"mobile/check_dupl_id";
+        String url = BASE_URL+"insta/check_dupl_id";
         //		String registrationId = ContextUtil.getRegistrationId(context);
 
         Map<String, String> data = new HashMap<String, String>();
-        data.put("user_id", id);
+        data.put("userId", id);
 
         AsyncHttpRequest.post(context, url,  data, false, new AsyncHttpRequest.HttpResponseHandler() {
 

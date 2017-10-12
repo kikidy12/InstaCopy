@@ -16,6 +16,7 @@ public class User implements Serializable {
     private int id;
     private String userId;
     private String name;
+    private String passWord;
     private String profileImgURL;
 
     public static User getUserFromJsonObject(JSONObject json) {
@@ -24,6 +25,7 @@ public class User implements Serializable {
             tempUser.setId(json.getInt("id"));
             tempUser.setUserId(json.getString("userId"));
             tempUser.setName(json.getString("name"));
+            tempUser.setPassWord(json.getString("password"));
             tempUser.setProfileImgURL(json.getString("profileImgURL"));
         } catch (JSONException e) {
             e.printStackTrace();
@@ -35,10 +37,11 @@ public class User implements Serializable {
 
     }
 
-    public User(int id, String userId, String name, String profileImgURL) {
+    public User(int id, String userId, String name, String passWord, String profileImgURL) {
         this.id = id;
         this.userId = userId;
         this.name = name;
+        this.passWord = passWord;
         this.profileImgURL = profileImgURL;
     }
 
@@ -64,6 +67,14 @@ public class User implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPassWord() {
+        return passWord;
+    }
+
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
     }
 
     public String getProfileImgURL() {

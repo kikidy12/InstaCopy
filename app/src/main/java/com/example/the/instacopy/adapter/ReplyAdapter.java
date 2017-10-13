@@ -43,7 +43,6 @@ public class ReplyAdapter extends ArrayAdapter<ReplyData> {
 
         ReplyData data = mList.get(position);
 
-
         return row;
     }
 

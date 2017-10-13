@@ -51,6 +51,7 @@ public class AddNewsfeedActivity extends BaseActivity {
                 if (contentEdt.getText().toString().equals("") || bitmap == null) {
                     Toast.makeText(mContext, "내용을 입력하세요.", Toast.LENGTH_SHORT).show();
                 }
+
                 else {
                     ServerUtil.updateProfilePhoto(mContext, ContextUtil.getLoginUser(mContext).getId(), bitmap, contentEdt.getText().toString(), new ServerUtil.JsonResponseHandler() {
                         @Override

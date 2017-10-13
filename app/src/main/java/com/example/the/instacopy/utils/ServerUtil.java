@@ -299,11 +299,9 @@ public class ServerUtil {
 
 
     // 댓글 달기
-    public static void register_reply(final Context context,
-                                        final int userId,
-                                        final String content,
+    public static void registerReply(final Context context, final int userId, final String content,
                                         final JsonResponseHandler handler) {
-        String url = BASE_URL+"mobile/register_reply";
+        String url = BASE_URL+"insta/registerReply";
         //		String registrationId = ContextUtil.getRegistrationId(context);
 
         Map<String, String> data = new HashMap<String, String>();

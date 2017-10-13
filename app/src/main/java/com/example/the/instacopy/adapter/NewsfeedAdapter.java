@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.the.instacopy.NewsFeedDetailActivity;
 import com.example.the.instacopy.R;
 import com.example.the.instacopy.ReplyActivity;
 import com.example.the.instacopy.data.NewsfeedData;
@@ -101,9 +102,11 @@ public class NewsfeedAdapter extends ArrayAdapter<NewsfeedData> {
                         try {
                             if (json.getBoolean("result")) {
                                 data.getLikeUsers().add(ContextUtil.getLoginUser(mContext));
+                                Toast.makeText(mContext, "좋아요를 눌렀습니다.", Toast.LENGTH_SHORT).show();
                             }
                             else {
                                 data.getLikeUsers().remove(ContextUtil.getLoginUser(mContext));
+                                Toast.makeText(mContext, "좋아요가 취소되었습니다.", Toast.LENGTH_SHORT).show();
                             }
 
                             notifyDataSetChanged();
@@ -129,6 +132,15 @@ public class NewsfeedAdapter extends ArrayAdapter<NewsfeedData> {
         else {
             heartImg.setImageResource(R.drawable.empty_heart);
         }
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, NewsFeedDetailActivity.class);
+                intent.putExtra("뉴스정보", data);
+                mContext.startActivity(intent);
+            }
+        });
 
         return row;
     }

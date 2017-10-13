@@ -76,14 +76,14 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        homeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getActivity(), NewsFeedDetailActivity.class);
-                intent.putExtra("뉴스정보", mNewsfeedDataList.get(position));
-                startActivity(intent);
-            }
-        });
+//        homeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Intent intent = new Intent(getActivity(), NewsFeedDetailActivity.class);
+//                intent.putExtra("뉴스정보", mNewsfeedDataList.get(position));
+//                startActivity(intent);
+//            }
+//        });
     }
 
     // 전체 뉴스피드를 서버에서 받아온다.

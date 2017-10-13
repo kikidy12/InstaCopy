@@ -33,11 +33,13 @@ public class NewsFeedDetailActivity extends BaseActivity {
     private android.widget.ImageView replyImg;
     private android.widget.TextView likeCountTxt;
     private android.widget.TextView contentTxt;
+    private ImageView backBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_feed_detail);
+
         bindViews();
         setupEvents();
     }
@@ -83,6 +85,12 @@ public class NewsFeedDetailActivity extends BaseActivity {
             }
         });
 
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override
@@ -122,12 +130,14 @@ public class NewsFeedDetailActivity extends BaseActivity {
                         heartImg.setImageResource(R.drawable.heart_black);
                         isheart=true;
                         currentLikeCount++;
+                        Toast.makeText(mContext, "좋아요를 눌렀습니다.", Toast.LENGTH_SHORT).show();
                     }
                     else {
                         Log.d("좋아요", json.getString("message"));
                         heartImg.setImageResource(R.drawable.empty_heart);
                         isheart=false;
                         currentLikeCount--;
+                        Toast.makeText(mContext, "좋아요가 취소되었습니다.", Toast.LENGTH_SHORT).show();
                     }
                     likeCountTxt.setText(currentLikeCount+"개");
                 } catch (JSONException e) {
@@ -139,12 +149,13 @@ public class NewsFeedDetailActivity extends BaseActivity {
 
     @Override
     public void bindViews() {
-        this.contentTxt = (TextView) findViewById(R.id.contentTxt);
         this.likeCountTxt = (TextView) findViewById(R.id.likeCountTxt);
         this.replyImg = (ImageView) findViewById(R.id.replyImg);
         this.heartImg = (ImageView) findViewById(R.id.heartImg);
+        this.contentTxt = (TextView) findViewById(R.id.contentTxt);
         this.imageView = (ImageView) findViewById(R.id.imageView);
         this.seeMoreBtn = (ImageView) findViewById(R.id.seeMoreBtn);
         this.idTxt = (TextView) findViewById(R.id.idTxt);
+        this.backBtn = (ImageView) findViewById(R.id.backBtn);
     }
 }

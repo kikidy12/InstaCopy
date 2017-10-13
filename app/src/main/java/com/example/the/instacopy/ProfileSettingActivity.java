@@ -50,7 +50,7 @@ public class ProfileSettingActivity extends BaseActivity {
         okBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                finish();
             }
         });
         cancelBtn.setOnClickListener(new View.OnClickListener() {

@@ -144,9 +144,10 @@ public class LoginActivity extends BaseActivity {
                 }
                 else {
 
-                    User temp = new User(0, currentProfile.getId(), currentProfile.getName(), "fsdfsdf", currentProfile.getProfilePictureUri(200, 200).toString());
+//                    User temp = new User(0, currentProfile.getId(), currentProfile.getName(), "fsdfsdf",
+//                            currentProfile.getProfilePictureUri(200, 200).toString());
 
-                    ContextUtil.login(mContext, temp);
+//                    ContextUtil.login(mContext, temp);
 
 //                    로그인이 된 경우
                     Toast.makeText(mContext, "로그인한 사람 : " + currentProfile.getName(), Toast.LENGTH_SHORT).show();

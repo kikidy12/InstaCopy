@@ -21,12 +21,13 @@ public class SignUpActivity extends BaseActivity {
     private android.widget.Button signUpBtn;
     private EditText nameEdt;
     boolean isIdOk = false;
+    private EditText eMailEdt;
+    private EditText phoneNumEdt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-
         bindViews();
         setupEvents();
         setValues();
@@ -43,11 +44,10 @@ public class SignUpActivity extends BaseActivity {
                     public void onResponse(JSONObject json) {
                         try {
                             if (json.getBoolean("result")) {
-                                isIdOk=true;
+                                isIdOk = true;
                                 Toast.makeText(mContext, "사용해도 좋은 아이디입니다.", Toast.LENGTH_SHORT).show();
-                            }
-                            else {
-                                isIdOk=false;
+                            } else {
+                                isIdOk = false;
                                 AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                                 builder.setTitle("가입 불가");
                                 builder.setMessage("이미 사용중인 아이디입니다. 다시 입력하세요.");
@@ -84,18 +84,34 @@ public class SignUpActivity extends BaseActivity {
                     return;
                 }
 
-                ServerUtil.sign_up(mContext, idEdt.getText().toString(), pwEdt.getText().toString(), nameEdt.getText().toString(), new ServerUtil.JsonResponseHandler() {
+                boolean isMailOk = !eMailEdt.getText().toString().equals("");
+                if (!isMailOk) {
+                    Toast.makeText(mContext, "메일주소를 입력하세요.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                boolean isPhoneNumOk = !phoneNumEdt.getText().toString().equals("");
+                if (!isPhoneNumOk) {
+                    Toast.makeText(mContext, "전화번호를 입력하세요.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                ServerUtil.sign_up(mContext,
+                        idEdt.getText().toString(),
+                        pwEdt.getText().toString(),
+                        nameEdt.getText().toString(),
+                        eMailEdt.getText().toString(),
+                        phoneNumEdt.getText().toString(),
+                        new ServerUtil.JsonResponseHandler() {
                     @Override
                     public void onResponse(JSONObject json) {
                         try {
                             if (json.getBoolean("result")) {
                                 Toast.makeText(mContext, "회원가입 성공", Toast.LENGTH_SHORT).show();
-
                                 Intent intent = new Intent(mContext, LoginActivity.class);
                                 startActivity(intent);
                                 finish();
                             }
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -114,6 +130,8 @@ public class SignUpActivity extends BaseActivity {
     @Override
     public void bindViews() {
         this.signUpBtn = (Button) findViewById(R.id.signUpBtn);
+        this.phoneNumEdt = (EditText) findViewById(R.id.phoneNumEdt);
+        this.eMailEdt = (EditText) findViewById(R.id.eMailEdt);
         this.pwEdt = (EditText) findViewById(R.id.pwEdt);
         this.nameEdt = (EditText) findViewById(R.id.nameEdt);
         this.checkDuplBtn = (Button) findViewById(R.id.checkDuplBtn);

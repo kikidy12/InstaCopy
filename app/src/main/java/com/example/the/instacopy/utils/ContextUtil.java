@@ -19,6 +19,8 @@ public class ContextUtil {
     private final static String USER_NAME = "USER_NAME";
     private final static String USER_PASSWORD = "USER_PASSWORD";
     private final static String USER_PROFILE_URL = "USER_PROFILE_URL";
+    private final static String USER_MAIL_ADDRESS = "USER_MAIL_ADDRESS";
+    private final static String USER_PHONE_NUM = "USER_PHONE_NUM";
 
 
 
@@ -30,6 +32,8 @@ public class ContextUtil {
         pref.edit().putString(USER_NAME, "").commit();
         pref.edit().putString(USER_PROFILE_URL, "").commit();
         pref.edit().putString(USER_PASSWORD,"").commit();
+        pref.edit().putString(USER_MAIL_ADDRESS,"").commit();
+        pref.edit().putString(USER_PHONE_NUM,"").commit();
 
         loginUser = null;
 
@@ -44,6 +48,9 @@ public class ContextUtil {
         pref.edit().putString(USER_NAME, loginUser.getName()).commit();
         pref.edit().putString(USER_PASSWORD, loginUser.getPassWord()).commit();
         pref.edit().putString(USER_PROFILE_URL, loginUser.getProfileImgURL()).commit();
+        pref.edit().putString(USER_MAIL_ADDRESS, loginUser.getProfileImgURL()).commit();
+        pref.edit().putString(USER_PHONE_NUM, loginUser.getProfileImgURL()).commit();
+
     }
 
     public static User getLoginUser(Context context) {
@@ -61,6 +68,9 @@ public class ContextUtil {
             loginUser.setName(pref.getString(USER_NAME, ""));
             loginUser.setPassWord(pref.getString(USER_PASSWORD,""));
             loginUser.setProfileImgURL(pref.getString(USER_PROFILE_URL, ""));
+            loginUser.setEmailAddress(pref.getString(USER_MAIL_ADDRESS, ""));
+            loginUser.setPhoneNum(pref.getString(USER_PHONE_NUM, ""));
+
         }
 
         return loginUser;

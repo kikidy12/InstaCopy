@@ -76,6 +76,31 @@
             android:inputType="textPassword"/>
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="메일주소"/>
+
+        <EditText
+            android:id="@+id/eMailEdt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="메일주소를 입력하세요."
+            android:inputType="textEmailAddress"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="전화번호"/>
+
+        <EditText
+            android:id="@+id/phoneNumEdt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="전화번호를 입력하세요."
+            android:inputType="phone"/>
+
+
+        <TextView
             android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

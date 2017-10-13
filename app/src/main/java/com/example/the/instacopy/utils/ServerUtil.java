@@ -68,7 +68,8 @@ public class ServerUtil {
     }
 
     // 회원 가입 기능
-    public static void sign_up(final Context context, final String id, final String pw, final String name, final JsonResponseHandler handler) {
+    public static void sign_up(final Context context, final String id, final String pw, final String name,
+                               final String mail, final String phoneNum, final JsonResponseHandler handler) {
         String url = BASE_URL+"insta/sign_up";
         //		String registrationId = ContextUtil.getRegistrationId(context);
 
@@ -76,6 +77,8 @@ public class ServerUtil {
         data.put("userId", id);
         data.put("password", pw);
         data.put("name", name);
+        data.put("email", mail);
+        data.put("phone", phoneNum);
 
         AsyncHttpRequest.post(context, url,  data, true, new AsyncHttpRequest.HttpResponseHandler() {
 

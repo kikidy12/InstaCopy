@@ -39,13 +39,8 @@ public class NewsFeedDetailActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_feed_detail);
         bindViews();
-        setupEvents();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
         setValues();
+        setupEvents();
     }
 
     @Override
@@ -61,20 +56,12 @@ public class NewsFeedDetailActivity extends BaseActivity {
                 }).show();
             }
         });
-
         heartImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!isheart) {
-                    settingLikeToServer();
-                }
-                else {
-                    settingLikeToServer();
-                }
+                settingLikeToServer();
             }
         });
-
-
         replyImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,7 +69,6 @@ public class NewsFeedDetailActivity extends BaseActivity {
                 mContext.startActivity(intent);
             }
         });
-
     }
 
     @Override
@@ -99,16 +85,11 @@ public class NewsFeedDetailActivity extends BaseActivity {
         likeCountTxt.setText(currentLikeCount+"개");
         Glide.with(mContext).load("http://13.125.2.51/" + mNewsfeed.getImageURL()).into(imageView);
 
-        for (User like : mNewsfeed.getLikeUsers()) {
-            if (like.getId() == ContextUtil.getLoginUser(mContext).getId()) {
-                heartImg.setImageResource(R.drawable.heart_black);
-                isheart=true;
-                break;
-            }
-            else {
-                heartImg.setImageResource(R.drawable.empty_heart);
-                isheart=false;
-            }
+        if (mNewsfeed.getLikeUsers().contains(ContextUtil.getLoginUser(mContext))) {
+            heartImg.setImageResource(R.drawable.heart_black);
+        }
+        else {
+            heartImg.setImageResource(R.drawable.empty_heart);
         }
     }
 
@@ -120,16 +101,14 @@ public class NewsFeedDetailActivity extends BaseActivity {
                     if (json.getBoolean("result")) {
                         Log.d("좋아요", json.getString("message"));
                         heartImg.setImageResource(R.drawable.heart_black);
-                        isheart=true;
-                        currentLikeCount++;
+                        mNewsfeed.getLikeUsers().add(ContextUtil.getLoginUser(mContext));
                     }
                     else {
                         Log.d("좋아요", json.getString("message"));
                         heartImg.setImageResource(R.drawable.empty_heart);
-                        isheart=false;
-                        currentLikeCount--;
+                        mNewsfeed.getLikeUsers().remove(ContextUtil.getLoginUser(mContext));
                     }
-                    likeCountTxt.setText(currentLikeCount+"개");
+                    likeCountTxt.setText(mNewsfeed.getLikeUsers().size()+"개");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

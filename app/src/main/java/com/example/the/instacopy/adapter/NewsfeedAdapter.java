@@ -68,16 +68,16 @@ public class NewsfeedAdapter extends ArrayAdapter<NewsfeedData> {
         ImageView replyImg = (ImageView) row.findViewById(R.id.replyImg);
         ImageView seeMoreBtn = (ImageView) row.findViewById(R.id.seeMoreBtn);
         TextView idTxt = (TextView) row.findViewById(R.id.idTxt);
-        final TextView IDTxt = (TextView) row.findViewById(R.id.IDTxt);
-        final TextView likeCountTxt = (TextView) row.findViewById(R.id.likeCountTxt);
+        TextView IDTxt = (TextView) row.findViewById(R.id.IDTxt);
+        TextView likeCountTxt = (TextView) row.findViewById(R.id.likeCountTxt);
         TextView contentTxt = (TextView)row.findViewById(R.id.contentTxt);
-        final ImageView heartImg = (ImageView) row.findViewById(R.id.heartImg);
+        ImageView heartImg = (ImageView) row.findViewById(R.id.heartImg);
 
         idTxt.setText(data.getWriter().getName());
         IDTxt.setText(data.getWriter().getUserId());
         String likeStr = String.format(Locale.KOREA, "%d개", data.getLikeUsers().size());
         Glide.with(mContext).load("http://13.125.2.51/" + data.getImageURL()).into(imageView);
-        likeCountTxt.setText(data.getLikeUsers().size()+"개");
+        likeCountTxt.setText(likeStr+"개");
         contentTxt.setText(data.getContent());
 
         seeMoreBtn.setOnClickListener(new View.OnClickListener() {
@@ -102,11 +102,9 @@ public class NewsfeedAdapter extends ArrayAdapter<NewsfeedData> {
                         try {
                             if (json.getBoolean("result")) {
                                 data.getLikeUsers().add(ContextUtil.getLoginUser(mContext));
-                                Toast.makeText(mContext, "좋아요를 눌렀습니다.", Toast.LENGTH_SHORT).show();
                             }
                             else {
                                 data.getLikeUsers().remove(ContextUtil.getLoginUser(mContext));
-                                Toast.makeText(mContext, "좋아요가 취소되었습니다.", Toast.LENGTH_SHORT).show();
                             }
 
                             notifyDataSetChanged();
@@ -143,10 +141,6 @@ public class NewsfeedAdapter extends ArrayAdapter<NewsfeedData> {
         });
 
         return row;
-    }
-
-    private void settingLikeToServer() {
-
     }
 
 }

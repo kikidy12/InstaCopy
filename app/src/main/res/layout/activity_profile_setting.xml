@@ -284,6 +284,7 @@
                         android:src="@mipmap/ic_launcher" />
 
                     <EditText
+                        android:id="@+id/emailEdt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
@@ -312,6 +313,7 @@
                         android:src="@mipmap/ic_launcher" />
 
                     <EditText
+                        android:id="@+id/phoneNumEdt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"

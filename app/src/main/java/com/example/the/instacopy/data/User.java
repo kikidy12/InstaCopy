@@ -18,6 +18,8 @@ public class User implements Serializable {
     private String name;
     private String passWord;
     private String profileImgURL;
+    private String emailAddress;
+    private String phoneNum;
 
     public static User getUserFromJsonObject(JSONObject json) {
         User tempUser = new User();
@@ -37,12 +39,14 @@ public class User implements Serializable {
 
     }
 
-    public User(int id, String userId, String name, String passWord, String profileImgURL) {
+    public User(int id, String userId, String name, String passWord, String profileImgURL, String emailAddress, String phoneNum) {
         this.id = id;
         this.userId = userId;
         this.name = name;
         this.passWord = passWord;
         this.profileImgURL = profileImgURL;
+        this.emailAddress = emailAddress;
+        this.phoneNum = phoneNum;
     }
 
     public int getId() {
@@ -83,6 +87,22 @@ public class User implements Serializable {
 
     public void setProfileImgURL(String profileImgURL) {
         this.profileImgURL = profileImgURL;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
     }
 
     @Override

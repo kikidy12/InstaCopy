@@ -29,6 +29,8 @@ public class User implements Serializable {
             tempUser.setName(json.getString("name"));
             tempUser.setPassWord(json.getString("password"));
             tempUser.setProfileImgURL(json.getString("profileImgURL"));
+            tempUser.setEmailAddress(json.getString("email"));
+            tempUser.setPhoneNum(json.getString("phone"));
         } catch (JSONException e) {
             e.printStackTrace();
         }

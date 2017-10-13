@@ -27,6 +27,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class LoginActivity extends BaseActivity {
 
+    int ij = 0;
     CallbackManager cm;
     ProfileTracker pt;
 

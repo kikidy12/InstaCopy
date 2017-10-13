@@ -48,8 +48,8 @@ public class ContextUtil {
         pref.edit().putString(USER_NAME, loginUser.getName()).commit();
         pref.edit().putString(USER_PASSWORD, loginUser.getPassWord()).commit();
         pref.edit().putString(USER_PROFILE_URL, loginUser.getProfileImgURL()).commit();
-        pref.edit().putString(USER_MAIL_ADDRESS, loginUser.getProfileImgURL()).commit();
-        pref.edit().putString(USER_PHONE_NUM, loginUser.getProfileImgURL()).commit();
+        pref.edit().putString(USER_MAIL_ADDRESS, loginUser.getEmailAddress()).commit();
+        pref.edit().putString(USER_PHONE_NUM, loginUser.getPhoneNum()).commit();
 
     }
 
